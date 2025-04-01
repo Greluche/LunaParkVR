@@ -1,6 +1,6 @@
-Title: LunaPark VR
-Genre: Arcade, escape game
-Platform: VR
+Title: LunaPark VR //
+Genre: Arcade, escape game //
+Platform: VR //
 Target audience: Anyone who wants to get familiar with the mechanics
 of a VR game!
 
