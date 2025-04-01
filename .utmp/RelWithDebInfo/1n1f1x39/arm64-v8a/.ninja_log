@@ -1,0 +1,12 @@
+# ninja log v5
+180	523	7652072717391306	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	a530dbd818f85f1
+526	1516	7652072727063725	C:/Users/leosp/LunaParkVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1n1f1x39/obj/arm64-v8a/libswappywrapper.so	69cffaf8c35b24f7
+55	2626	7652072738283625	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	617ba312c9aeb261
+99	2642	7652072738410694	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	26e8277f6b3d46ce
+34	2687	7652072738890542	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	aad0dcbcf9094982
+152	2783	7652072739880429	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1503fe58296a4a2b
+1	2795	7652072739956097	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	d16baad4fc8b4814
+125	2946	7652072741539719	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	71d5f7adde376df
+75	3352	7652072745555752	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	2d742f10e89a3fc
+14	3511	7652072747148039	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	fb2b220d97dd2b87
+3511	4233	7652072754325206	C:/Users/leosp/LunaParkVR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1n1f1x39/obj/arm64-v8a/libgame.so	3f6d035fa1046940
