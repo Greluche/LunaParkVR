@@ -33,7 +33,8 @@ namespace LowPolyWater
         /// <returns></returns>
         MeshFilter CreateMeshLowPoly(MeshFilter mf)
         {
-            mesh = mf.sharedMesh;
+            mesh = Instantiate(mf.sharedMesh);
+            mf.mesh = mesh;
 
             //Get the original vertices of the gameobject's mesh
             Vector3[] originalVertices = mesh.vertices;
