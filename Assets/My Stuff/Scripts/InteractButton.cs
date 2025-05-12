@@ -12,6 +12,14 @@ public class InteractButton : MonoBehaviour
     }
     private void Update()
     {
+        
+        if (DialogueManager.IsDialogueActive)
+        {
+            // Dialogue is ongoing → hide the interact prompt
+            Hide();
+            return;
+        }
+
         if (playerInteract.IsNearInteractable())
         {
             Debug.Log("Player is near NPC — show UI");
