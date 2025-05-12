@@ -8,7 +8,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 using TMPro;
 
-[RequireComponent(typeof(InputData))]
 public class Shoot_arrow : MonoBehaviour
 {
     
@@ -47,7 +46,7 @@ public class Shoot_arrow : MonoBehaviour
         if(bow_script.isArrowGrabbed && !is_held  ){
              r_a =UnityEngine.Object.Instantiate(arrow,midpoint.transform.position ,transform.rotation, transform);
             r_a.transform.localScale= new Vector3(1.5f,1.5f ,1.5f );
-            r_a.transform.rotation = transform.rotation * Quaternion.Euler(0,90,0);
+            r_a.transform.rotation = transform.rotation * Quaternion.Euler(90,90,0);
             r_a.transform.localPosition = lineRenderer.GetPosition(1);
              rb =   r_a.GetComponent<Rigidbody>();
             
@@ -62,7 +61,7 @@ public class Shoot_arrow : MonoBehaviour
             var handpos  =  transform.TransformPoint( lineRenderer.GetPosition(1));
             if(middlepoint!= handpos){
                
-                  r_a.transform.rotation =Quaternion.LookRotation(   transform.forward  ,   (handpos-middlepoint).normalized);
+                  r_a.transform.rotation =Quaternion.LookRotation(   transform.forward  ,   (handpos-middlepoint).normalized) * Quaternion.Euler(-90,0,0);
                
             }
 
@@ -87,7 +86,7 @@ public class Shoot_arrow : MonoBehaviour
                 rb.isKinematic = false;
                 var  middlepoint = (endpoint_1.position-endpoint_2.position)/2 + endpoint_2.position;
                 var handpos  =  transform.TransformPoint( lineRenderer.GetPosition(1));
-                rb?.AddForce((-handpos+middlepoint )*2*(force), ForceMode.Impulse);
+                rb?.AddForce((-handpos+middlepoint )*5*(force), ForceMode.Impulse);
                 Debug.Log((handpos-middlepoint ).ToString());
                 Debug.Log( (Quaternion.Euler(0,-90,0 ) * transform.forward).ToString());
                 
