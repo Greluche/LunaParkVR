@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/Hub.unity
     guid: 6e2fc3272ac66d6448ea076bbb30b6de
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/BumpingCars.unity
     guid: dba9c8d0cf288d7438f50b06b3aefbf0
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/Archery.unity
     guid: 04f69add8b0295c40a89f05f59988fda
   - enabled: 0
