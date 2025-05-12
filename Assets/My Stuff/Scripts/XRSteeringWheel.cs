@@ -1,92 +1,143 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
-public class XRSteeringWheel : MonoBehaviour
+
+public class SteeringWheel : UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable
 {
-    [Header("Visual")]
-    [SerializeField] Transform steeringWheelVisual;
+    [SerializeField] private Transform wheelTransform;
 
-    [Header("Rotation Settings")]
-    [SerializeField] float maxRotationAngle = 450f;
-    [SerializeField] float minRotationAngle = -450f;
-    [SerializeField] float sensitivity = 1.5f;
+    [Header("Wheel Rotation Limits")]
+    [SerializeField] private float minAngle = -180f;
+    [SerializeField] private float maxAngle = 180f;
 
-    [Header("Events")]
-    public UnityEvent<float> onSteeringValueChanged;
+    [Header("Auto-Center Settings")]
+    [SerializeField] private bool autoCenter = true;
+    [SerializeField] private float autoCenterSpeed = 90f; // degrees per second
 
-    UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor interactor;
-    float currentRotation = 0f;
-    float baseAngle = 0f;
-    float currentSteeringValue = 0f;
+    public UnityEvent<float> OnWheelRotated;
 
-    UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
+    private UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor controllingInteractor = null;
+    private float currentInteractorAngle = 0.0f;
+    private float wheelAngle = 0.0f;
 
-    void Awake()
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        grabInteractable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-        grabInteractable.selectEntered.AddListener(OnGrab);
-        grabInteractable.selectExited.AddListener(OnRelease);
-    }
+        base.OnSelectEntered(args);
 
-    void OnDestroy()
-    {
-        grabInteractable.selectEntered.RemoveListener(OnGrab);
-        grabInteractable.selectExited.RemoveListener(OnRelease);
-    }
-
-    void OnGrab(SelectEnterEventArgs args)
-    {
-        interactor = args.interactorObject;
-        baseAngle = GetInteractorAngle();
-    }
-
-    void OnRelease(SelectExitEventArgs args)
-    {
-        interactor = null;
-    }
-
-    void Update()
-    {
-        if (interactor != null)
+        if (controllingInteractor == null)
         {
-            float currentAngle = GetInteractorAngle();
-            float delta = Mathf.DeltaAngle(baseAngle, currentAngle);
-
-            currentRotation += delta * sensitivity;
-            currentRotation = Mathf.Clamp(currentRotation, minRotationAngle, maxRotationAngle);
-
-            baseAngle = currentAngle;
-
-            ApplyRotation();
-            EmitSteeringValue();
+            controllingInteractor = args.interactorObject;
+            currentInteractorAngle = FindWheelAngle(controllingInteractor);
+        }
+        else
+        {
+            // If we already have a controller, prefer the one closest to "up" (top of wheel)
+            controllingInteractor = FindPrimaryInteractor();
+            currentInteractorAngle = FindWheelAngle(controllingInteractor);
         }
     }
 
-    float GetInteractorAngle()
+    protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        var interactorTransform = interactor.GetAttachTransform(grabInteractable);
-        Vector3 localDir = transform.InverseTransformPoint(interactorTransform.position) - Vector3.zero;
-        float angle = Mathf.Atan2(localDir.y, localDir.x) * Mathf.Rad2Deg;
-        return angle;
-    }
+        base.OnSelectExited(args);
 
-    void ApplyRotation()
-    {
-        if (steeringWheelVisual != null)
+        if (args.interactorObject == controllingInteractor)
         {
-            steeringWheelVisual.localRotation = Quaternion.Euler(0f, 0f, -currentRotation);
+            controllingInteractor = null;
+
+            if (interactorsSelecting.Count > 0)
+            {
+                controllingInteractor = FindPrimaryInteractor();
+                currentInteractorAngle = FindWheelAngle(controllingInteractor);
+            }
         }
     }
 
-    void EmitSteeringValue()
+    public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
     {
-        // Normalize between -1 and 1
-        float normalized = Mathf.InverseLerp(minRotationAngle, maxRotationAngle, currentRotation) * 2f - 1f;
-        if (Mathf.Abs(normalized - currentSteeringValue) > 0.001f)
+        base.ProcessInteractable(updatePhase);
+
+        if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
         {
-            currentSteeringValue = normalized;
-            onSteeringValueChanged?.Invoke(currentSteeringValue);
+            if (controllingInteractor != null)
+            {
+                RotateWheel();
+            }
+            else if (autoCenter && Mathf.Abs(wheelAngle) > 0.01f)
+            {
+                AutoCenterWheel();
+            }
         }
+    }
+
+    private void RotateWheel()
+    {
+        float newInteractorAngle = FindWheelAngle(controllingInteractor);
+        float angleDifference = Mathf.DeltaAngle(currentInteractorAngle, newInteractorAngle);
+
+        float newWheelAngle = Mathf.Clamp(wheelAngle + angleDifference, minAngle, maxAngle);
+        float allowedDifference = newWheelAngle - wheelAngle;
+
+        wheelTransform.Rotate(transform.forward, allowedDifference, Space.World);
+
+        wheelAngle = newWheelAngle;
+        currentInteractorAngle = newInteractorAngle;
+
+        OnWheelRotated?.Invoke(wheelAngle);
+    }
+
+    private void AutoCenterWheel()
+    {
+        float delta = autoCenterSpeed * Time.deltaTime;
+        float newWheelAngle = Mathf.MoveTowards(wheelAngle, 0f, delta);
+
+        float allowedDifference = newWheelAngle - wheelAngle;
+        wheelTransform.Rotate(transform.forward, allowedDifference, Space.World);
+
+        wheelAngle = newWheelAngle;
+
+        OnWheelRotated?.Invoke(wheelAngle);
+    }
+    
+    public float WheelAngleNormalized()
+    {
+        return Mathf.Clamp(wheelAngle / maxAngle, -1f, 1f);
+    }
+    
+    private float FindWheelAngle(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor interactor)
+    {
+        Vector2 localPos = FindLocalPoint(interactor.transform.position);
+        return ConvertToAngle(localPos);
+    }
+
+    private Vector2 FindLocalPoint(Vector3 position)
+    {
+        return transform.InverseTransformPoint(position).normalized;
+    }
+
+    private float ConvertToAngle(Vector2 direction)
+    {
+        return Vector2.SignedAngle(Vector2.up, direction);
+    }
+
+    private UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor FindPrimaryInteractor()
+    {
+        UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor bestInteractor = null;
+        float bestDot = -Mathf.Infinity;
+
+        foreach (var interactor in interactorsSelecting)
+        {
+            Vector3 localPos = transform.InverseTransformPoint(interactor.transform.position).normalized;
+            float dot = Vector3.Dot(localPos, Vector3.up); // how close to "top"
+
+            if (dot > bestDot)
+            {
+                bestDot = dot;
+                bestInteractor = interactor;
+            }
+        }
+
+        return bestInteractor;
     }
 }
+
