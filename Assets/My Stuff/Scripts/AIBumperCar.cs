@@ -18,19 +18,17 @@ public class AIBumperCar : MonoBehaviour
     public float arenaWidth = 20f;
     public float arenaHeight = 20f;
 
-    private Rigidbody rb;
     private float directionTimer = 0f;
     private Vector3 targetDirection;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         PickRandomDirection();
     }
 
     void Update()
     {
-        float dt = Time.fixedDeltaTime;
+        float dt = Time.deltaTime;
 
         directionTimer -= dt;
         if (directionTimer <= 0f)
@@ -38,18 +36,17 @@ public class AIBumperCar : MonoBehaviour
             UpdateDirection();
         }
 
-        // Steering
-        Vector3 flatForward = rb.rotation * Vector3.forward;
+        // Rotate toward target
+        Vector3 flatForward = transform.forward;
         Vector3 flatTarget = targetDirection;
         flatForward.y = 0;
         flatTarget.y = 0;
 
         Vector3 newDir = Vector3.RotateTowards(flatForward, flatTarget, turnSpeed * Mathf.Deg2Rad * dt, 0f);
-        rb.MoveRotation(Quaternion.LookRotation(newDir));
+        transform.rotation = Quaternion.LookRotation(newDir);
 
-        // Forward motion
-        Vector3 move = rb.rotation * Vector3.forward * moveSpeed * dt;
-        rb.MovePosition(rb.position + move);
+        // Move forward
+        transform.Translate(Vector3.forward * moveSpeed * dt, Space.Self);
     }
 
     void UpdateDirection()
@@ -60,8 +57,23 @@ public class AIBumperCar : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, playerTransform.position) < fleeDistance)
         {
-            Vector3 fleeDir = (transform.position - playerTransform.position).normalized;
-            targetDirection = new Vector3(fleeDir.x, 0, fleeDir.z);
+            Vector3 toPlayer = (playerTransform.position - transform.position).normalized;
+            Vector3 fleeDir = -toPlayer;
+
+            // Figure out left vs right
+            Vector3 left = Quaternion.Euler(0, -90f, 0) * transform.forward;
+            Vector3 right = Quaternion.Euler(0, 90f, 0) * transform.forward;
+
+            // Pick the side more perpendicular to the player vector
+            float leftDot = Vector3.Dot(left, toPlayer);
+            float rightDot = Vector3.Dot(right, toPlayer);
+
+            Vector3 strafeDir = (leftDot < rightDot) ? left : right;
+
+            // Blend between direct flee and safe strafe
+            fleeDir = Vector3.Lerp(fleeDir, strafeDir, 0.7f).normalized;
+
+            targetDirection = fleeDir;
         }
         else
         {
@@ -70,22 +82,19 @@ public class AIBumperCar : MonoBehaviour
 
         directionTimer = directionChangeInterval;
     }
-    
+
     Vector3 GetSmartWallAvoidanceDirection()
     {
         RaycastHit hit;
 
-        // Cast a short ray forward to detect walls
         if (Physics.Raycast(transform.position, transform.forward, out hit, wallDetectionDistance))
         {
-            // Reflect off the wall surface (bounce logic)
             Vector3 incoming = transform.forward;
             Vector3 reflect = Vector3.Reflect(incoming, hit.normal);
             reflect.y = 0;
             return reflect.normalized;
         }
 
-        // If no forward wall, try to correct based on arena edges
         Vector3 local = transform.position - arenaCenter.position;
         Vector3 correction = Vector3.zero;
 
@@ -93,25 +102,12 @@ public class AIBumperCar : MonoBehaviour
         float halfH = arenaHeight / 2f;
 
         if (Mathf.Abs(local.x) > (halfW - wallDetectionDistance))
-        {
             correction.x = -Mathf.Sign(local.x);
-        }
 
         if (Mathf.Abs(local.z) > (halfH - wallDetectionDistance))
-        {
             correction.z = -Mathf.Sign(local.z);
-        }
 
-        if (correction != Vector3.zero)
-        {
-            correction = correction.normalized;
-        }
-        else
-        {
-            correction = transform.forward; // fallback: keep going
-        }
-
-        return correction;
+        return correction != Vector3.zero ? correction.normalized : transform.forward;
     }
 
     bool IsNearWall()
@@ -123,25 +119,24 @@ public class AIBumperCar : MonoBehaviour
         return Mathf.Abs(local.x) > (halfW - wallDetectionDistance) ||
                Mathf.Abs(local.z) > (halfH - wallDetectionDistance);
     }
+
     void PickRandomDirection()
     {
         Vector2 rand2D = Random.insideUnitCircle.normalized;
         targetDirection = new Vector3(rand2D.x, 0, rand2D.y);
     }
-    
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // Later: trigger explosion effect here
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
             Debug.Log($"{gameObject.name} was destroyed by the player!");
             if (explosionPrefab != null)
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
+
             Destroy(gameObject);
         }
     }
-
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class CameraReset : MonoBehaviour
 {
     [Header("References")]
@@ -9,6 +9,13 @@ public class CameraReset : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(DelayedRecenter());
+    }
+
+    private IEnumerator DelayedRecenter()
+    {
+        yield return null; // wait one frame for XR tracking to initialize
+
         RecenterRig();
     }
 
