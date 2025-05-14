@@ -18,11 +18,13 @@ public class AIBumperCar : MonoBehaviour
     public float arenaWidth = 20f;
     public float arenaHeight = 20f;
 
+    private BumperCarGameManager gameManager;
     private float directionTimer = 0f;
     private Vector3 targetDirection;
 
     void Start()
     {
+        gameManager = FindObjectOfType<BumperCarGameManager>();
         PickRandomDirection();
     }
 
@@ -134,6 +136,10 @@ public class AIBumperCar : MonoBehaviour
             if (explosionPrefab != null)
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            }
+            if (gameManager != null)
+            {
+                gameManager.OnAICarDestroyed();
             }
 
             Destroy(gameObject);

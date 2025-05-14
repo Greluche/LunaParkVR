@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/My Stuff/Scenes/Haunted House.unity
     guid: ee662599588ab0c4fb8025a4c5597f00
-  - enabled: 1
+  - enabled: 0
     path: Assets/My Stuff/Scenes/DuckFishing.unity
     guid: c4febcca3f98cf3478c9c4e84cf12abd
   m_configObjects:
