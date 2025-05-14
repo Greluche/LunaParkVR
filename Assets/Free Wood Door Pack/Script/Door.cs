@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
-using System;
-using System.Collections.Generic;
 
 using UnityEngine.XR.Interaction.Toolkit;
 namespace DoorScript
