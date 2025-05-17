@@ -10,6 +10,7 @@ public class DuckFishingGameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI tutorialText;
 
     [Header("Settings")]
     public float delayBeforeStart = 3f; // sync with countdown duration
@@ -54,12 +55,6 @@ public class DuckFishingGameManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(remainingTime / 60f);
         int seconds = Mathf.FloorToInt(remainingTime % 60f);
         timerText.text = $"Time: {minutes:00}:{seconds:00}";
-    }
-
-    public void OnDuckJailed()
-    {
-        ducksJailed++;
-        counterText.text = "Ducks captured: " + ducksJailed;
 
         if (remainingTime == 0)
         {
@@ -68,6 +63,17 @@ public class DuckFishingGameManager : MonoBehaviour
             winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());
         }
+    }
+
+    public void OnRodGrabbed()
+    {
+        winText.gameObject.SetActive(false);
+    }
+
+    public void OnDuckJailed()
+    {
+        ducksJailed++;
+        counterText.text = "Ducks captured: " + ducksJailed;
     }
     
     private IEnumerator ReturnToHubAfterDelay()

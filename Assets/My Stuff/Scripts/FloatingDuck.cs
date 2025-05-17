@@ -11,11 +11,11 @@ public class FloatingDuck : MonoBehaviour
 
     private DuckFishingGameManager gameManager;
     private XRController xr;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        xr = (XRController) GameObject.FindObjectOfType(typeof(XRController));
+        xr = (XRController)GameObject.FindObjectOfType(typeof(XRController));
     }
 
     // Update is called once per frame
@@ -25,8 +25,8 @@ public class FloatingDuck : MonoBehaviour
         float x = Mathf.Cos((Time.time + shift) * angularSpeed) * radius;
         float z = Mathf.Sin((Time.time + shift) * angularSpeed) * radius;
         // illusion of floating
-        float y = Mathf.PingPong(Time.time + shift, .05f);
-        
+        float y = Mathf.PingPong(0.01f * (Time.time + shift), .05f);
+
         transform.position = new Vector3(x, y, z);
         transform.LookAt(duckSpawnPoint);
     }
@@ -42,10 +42,16 @@ public class FloatingDuck : MonoBehaviour
             }
             Instantiate(gameObject, Vector3.zero, Quaternion.Euler(0, 90, 0));
 
-            // should be played when duck is fished but you can do that later
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Hook"))
+        {
+            this.GetComponent<Rigidbody>().useGravity = true;
             AudioSource.PlayClipAtPoint(duckScream, transform.position);
             xr.SendHapticImpulse(0.7f, 2f);
-
         }
     }
 }
