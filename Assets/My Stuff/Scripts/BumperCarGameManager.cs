@@ -53,7 +53,8 @@ public class BumperCarGameManager : MonoBehaviour
 
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
-        timerText.text = $"Time: {minutes:00}:{seconds:00}";
+        int dsec = Mathf.FloorToInt((elapsedTime * 10) % 10);
+        timerText.text = $"Time: {minutes:00}:{seconds:00}:{dsec:00}";
     }
 
     public void OnAICarDestroyed()
@@ -64,6 +65,7 @@ public class BumperCarGameManager : MonoBehaviour
         if (enemiesRemaining <= 0)
         {
             gameStarted = false;
+            HighScoreManager.BumpercarHighscore = elapsedTime;
             if (winText != null)
                 winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());

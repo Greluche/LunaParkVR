@@ -48,7 +48,6 @@ public class PlayerInteract : MonoBehaviour
         {
             if (collider.TryGetComponent(out NPCInteraction npcInteractable))
             {
-                Debug.Log("Found NPC in range! for button");
                 return true;
             }
         }
