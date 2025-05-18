@@ -7,14 +7,16 @@ public class FloatingDuck : MonoBehaviour
     public float radius = 2f;
     public float shift = 0f;
     public Transform duckSpawnPoint;
-    public AudioClip duckScream; // to be attached to the duck
+    public AudioClip duckScream;
 
     private DuckFishingGameManager gameManager;
     private XRController xr;
+    private AudioSource quack;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        quack.Play(0);
         xr = (XRController)GameObject.FindObjectOfType(typeof(XRController));
     }
 

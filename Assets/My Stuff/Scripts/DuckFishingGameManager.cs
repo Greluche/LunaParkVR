@@ -20,16 +20,13 @@ public class DuckFishingGameManager : MonoBehaviour
     public float returnToHubDelay = 3f;
     
     public Transform hubSpawnPoint;
-    private float remainingTime = 180f; // 3 minutes
+    private float countdownTime = 30f; // 30 secondes
     //private int totalEnemies;
     private int ducksJailed;
     private bool gameStarted = false;
 
     void Start()
     {
-        // Find all AI bumper cars at the start
-        //AIBumperCar[] allEnemies = FindObjectsOfType<AIBumperCar>();
-        //totalEnemies = allEnemies.Length;
         ducksJailed = 0;
 
         if (winText != null)
@@ -49,20 +46,20 @@ public class DuckFishingGameManager : MonoBehaviour
     void Update()
     {
         if (!gameStarted) return;
-
-        remainingTime -= Time.deltaTime;
-
-        int minutes = Mathf.FloorToInt(remainingTime / 60f);
-        int seconds = Mathf.FloorToInt(remainingTime % 60f);
+        
+        int minutes = Mathf.FloorToInt(countdownTime / 60f);
+        int seconds = Mathf.FloorToInt(countdownTime % 60f);
         timerText.text = $"Time: {minutes:00}:{seconds:00}";
 
-        if (remainingTime == 0)
+        while (countdownTime > 0f)
         {
-            gameStarted = false;
-            winText.text = "Done! You captured " + ducksJailed + " ducks";
-            winText.gameObject.SetActive(true);
-            StartCoroutine(ReturnToHubAfterDelay());
+            countdownTime -= Time.deltaTime;
         }
+
+        gameStarted = false;
+        winText.text = "Done! You captured " + ducksJailed + " ducks";
+        winText.gameObject.SetActive(true);
+        StartCoroutine(ReturnToHubAfterDelay());
     }
 
     public void OnRodGrabbed()
