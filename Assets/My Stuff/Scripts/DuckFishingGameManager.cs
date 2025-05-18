@@ -20,7 +20,7 @@ public class DuckFishingGameManager : MonoBehaviour
     public float returnToHubDelay = 3f;
     
     public Transform hubSpawnPoint;
-    private float countdownTime = 5f; // #TODO change time
+    private float countdownTime = 30f; // #TODO change time
     //private int totalEnemies;
     private int ducksJailed;
     private bool gameStarted = false;
