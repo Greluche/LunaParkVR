@@ -20,7 +20,7 @@ public class DuckFishingGameManager : MonoBehaviour
     public float returnToHubDelay = 3f;
     
     public Transform hubSpawnPoint;
-    private float countdownTime = 30f; // 30 secondes
+    private float countdownTime = 5f; // #TODO change time
     //private int totalEnemies;
     private int ducksJailed;
     private bool gameStarted = false;
@@ -46,20 +46,23 @@ public class DuckFishingGameManager : MonoBehaviour
     void Update()
     {
         if (!gameStarted) return;
-        
-        int minutes = Mathf.FloorToInt(countdownTime / 60f);
-        int seconds = Mathf.FloorToInt(countdownTime % 60f);
-        timerText.text = $"Time: {minutes:00}:{seconds:00}";
 
-        while (countdownTime > 0f)
+        if (countdownTime >= 0f)
         {
+            int minutes = Mathf.FloorToInt(countdownTime / 60f);
+            int seconds = Mathf.FloorToInt(countdownTime % 60f);
+            int dsec = Mathf.FloorToInt((countdownTime * 10) % 10);
+            timerText.text = $"Time: {minutes:00}:{seconds:00}:{dsec:00}";
             countdownTime -= Time.deltaTime;
         }
-
-        gameStarted = false;
-        winText.text = "Done! You captured " + ducksJailed + " ducks";
-        winText.gameObject.SetActive(true);
-        StartCoroutine(ReturnToHubAfterDelay());
+        else
+        {
+            gameStarted = false;
+            timerText.color = new Color(1, 0, 0, 1);
+            winText.text = "Done! You captured " + ducksJailed + " ducks";
+            winText.gameObject.SetActive(true);
+            //StartCoroutine(ReturnToHubAfterDelay());
+        }
     }
 
     public void OnRodGrabbed()

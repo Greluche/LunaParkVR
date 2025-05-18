@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 38671889}
   - component: {fileID: 38671888}
   - component: {fileID: 38671891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 48106312}
   - component: {fileID: 48106311}
   - component: {fileID: 48106314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 107263856}
   - component: {fileID: 107263855}
   - component: {fileID: 107263858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 264070382}
   - component: {fileID: 264070381}
   - component: {fileID: 264070384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,6 +1182,11 @@ Transform:
   - {fileID: 1011965235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &353249654 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
+  m_PrefabInstance: {fileID: 2371937978133247789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &353299029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4aca290f28a58e34f869165746a771cf, type: 3}
@@ -1200,7 +1205,7 @@ GameObject:
   - component: {fileID: 372178565}
   - component: {fileID: 372178564}
   - component: {fileID: 372178567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1433,7 +1438,7 @@ GameObject:
   - component: {fileID: 403593916}
   - component: {fileID: 403593915}
   - component: {fileID: 403593914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1529,7 +1534,7 @@ GameObject:
   - component: {fileID: 410989746}
   - component: {fileID: 410989745}
   - component: {fileID: 410989748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1672,7 @@ GameObject:
   - component: {fileID: 473601202}
   - component: {fileID: 473601201}
   - component: {fileID: 473601204}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1805,7 +1810,7 @@ GameObject:
   - component: {fileID: 475611463}
   - component: {fileID: 475611462}
   - component: {fileID: 475611465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,6 +2042,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4aca290f28a58e34f869165746a771cf, type: 3}
   m_PrefabInstance: {fileID: 25734799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &567547349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567547350}
+  m_Layer: 0
+  m_Name: FishingRod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &567547350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567547349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.137, y: 1.4450139, z: 0.357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 353249654}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &600504427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,7 +2352,7 @@ GameObject:
   - component: {fileID: 706301258}
   - component: {fileID: 706301257}
   - component: {fileID: 706301260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2560,7 +2597,7 @@ GameObject:
   - component: {fileID: 930622698}
   - component: {fileID: 930622697}
   - component: {fileID: 930622700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2698,7 +2735,7 @@ GameObject:
   - component: {fileID: 940506351}
   - component: {fileID: 940506350}
   - component: {fileID: 940506353}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2943,7 +2980,7 @@ GameObject:
   - component: {fileID: 1015714315}
   - component: {fileID: 1015714314}
   - component: {fileID: 1015714317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3087,7 +3124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1025620518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3300,7 +3337,7 @@ GameObject:
   - component: {fileID: 1061586845}
   - component: {fileID: 1061586844}
   - component: {fileID: 1061586847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3443,7 +3480,7 @@ GameObject:
   - component: {fileID: 1149706271}
   - component: {fileID: 1149706270}
   - component: {fileID: 1149706273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3866,7 +3903,7 @@ GameObject:
   - component: {fileID: 1250065879}
   - component: {fileID: 1250065878}
   - component: {fileID: 1250065881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4231,7 +4268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1312577435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4452,7 +4489,7 @@ GameObject:
   - component: {fileID: 1387959853}
   - component: {fileID: 1387959852}
   - component: {fileID: 1387959855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4709,7 +4746,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 1.27, y: 0, z: 0.605}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 847420308}
@@ -4746,7 +4783,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2282303ad8fd9294cafb3b53e6910842, type: 3}
   m_Resource: {fileID: 8300000, guid: 2282303ad8fd9294cafb3b53e6910842, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -4756,7 +4793,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0
-  MaxDistance: 0.7
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4877,10 +4914,10 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.09040811
-  m_Height: 0.18081622
+  m_Radius: 0.01586802
+  m_Height: 0.054718927
   m_Direction: 0
-  m_Center: {x: -0, y: 0.07743497, z: 0}
+  m_Center: {x: -0.00003777072, y: 0.10718463, z: 1.03073425e-19}
 --- !u!4 &1543098733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 80255bcdf80240a419ea949903e8d185, type: 3}
@@ -4899,7 +4936,7 @@ GameObject:
   - component: {fileID: 1550863677}
   - component: {fileID: 1550863676}
   - component: {fileID: 1550863679}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5039,7 +5076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645956304}
   - component: {fileID: 1645956305}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jail
   m_TagString: Jail
   m_Icon: {fileID: 0}
@@ -5104,8 +5141,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.35, z: 0.6}
-  m_Center: {x: -0.5, y: 0.15, z: 0}
+  m_Size: {x: 0.39999998, y: 0.49325627, z: 0.6}
+  m_Center: {x: -0.5, y: 0.18475023, z: 0}
 --- !u!1 &1649217854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5119,7 +5156,7 @@ GameObject:
   - component: {fileID: 1649217857}
   - component: {fileID: 1649217856}
   - component: {fileID: 1649217859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5614,7 +5651,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 1
@@ -5664,7 +5701,7 @@ GameObject:
   - component: {fileID: 1722889807}
   - component: {fileID: 1722889806}
   - component: {fileID: 1722889810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5791,7 +5828,7 @@ GameObject:
   - component: {fileID: 1734317008}
   - component: {fileID: 1734317007}
   - component: {fileID: 1734317010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5932,6 +5969,14 @@ PrefabInstance:
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 1659745273}
+    - target: {fileID: 4685202534210449378, guid: 68904a89291adce4ca91ec1b966f8858, type: 3}
+      propertyPath: aiScriptsToDisable.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4685202534210449378, guid: 68904a89291adce4ca91ec1b966f8858, type: 3}
+      propertyPath: playerScriptsToDisable.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6981237125922221943, guid: 68904a89291adce4ca91ec1b966f8858, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9157742
@@ -5990,7 +6035,7 @@ GameObject:
   - component: {fileID: 1839092463}
   - component: {fileID: 1839092462}
   - component: {fileID: 1839092465}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6127,9 +6172,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameScoreTimer
       objectReference: {fileID: 0}
+    - target: {fileID: 2817790360743152852, guid: 4a9d3028894e54046827c5d5e5b2450d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 3126958566405419953, guid: 4a9d3028894e54046827c5d5e5b2450d, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073383323683739866, guid: 4a9d3028894e54046827c5d5e5b2450d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7150823505184430650, guid: 4a9d3028894e54046827c5d5e5b2450d, type: 3}
       propertyPath: m_Camera
@@ -6266,7 +6319,7 @@ GameObject:
   - component: {fileID: 1940715792}
   - component: {fileID: 1940715791}
   - component: {fileID: 1940715794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6404,7 +6457,7 @@ GameObject:
   - component: {fileID: 1947344524}
   - component: {fileID: 1947344523}
   - component: {fileID: 1947344526}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6542,7 +6595,7 @@ GameObject:
   - component: {fileID: 2016947066}
   - component: {fileID: 2016947065}
   - component: {fileID: 2016947068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6716,7 +6769,7 @@ GameObject:
   - component: {fileID: 2119967904}
   - component: {fileID: 2119967903}
   - component: {fileID: 2119967906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6847,11 +6900,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 567547350}
     m_Modifications:
     - target: {fileID: 2525500049937658286, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_Name
-      value: FishingRod
+      value: Cylinder
       objectReference: {fileID: 0}
     - target: {fileID: 3538076481289603187, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_TagString
@@ -6863,15 +6916,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4450139
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6879,15 +6932,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6545832324594252089, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6922,7 +6975,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1306906405}
   - {fileID: 78374984}
-  - {fileID: 2371937978133247789}
+  - {fileID: 567547350}
   - {fileID: 403593916}
   - {fileID: 304788317}
   - {fileID: 1645956304}
