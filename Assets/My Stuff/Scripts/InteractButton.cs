@@ -22,7 +22,6 @@ public class InteractButton : MonoBehaviour
 
         if (playerInteract.IsNearInteractable())
         {
-            Debug.Log("Player is near NPC — show UI");
             Show();
         }
         else
