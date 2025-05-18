@@ -4,6 +4,9 @@ public class RubberDuckArchery : MonoBehaviour
 {
     public ParticleSystem animation;
     public GameObject duck;
+    public GameObject gameManager;
+    private ArcheryGameManager bow_script;
+    public AudioSource source;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,5 +22,7 @@ public class RubberDuckArchery : MonoBehaviour
     {
         animation.Play();
         Destroy(duck, 1);
+        gameManager.GetComponent<ArcheryGameManager>().OnDuckHit();
+        source.Play();
     }
 }
