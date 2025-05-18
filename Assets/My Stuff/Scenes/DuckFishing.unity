@@ -1948,7 +1948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &481894681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,6 +1966,8 @@ MonoBehaviour:
   shift: 3
   duckSpawnPoint: {fileID: 2033900348}
   duckScream: {fileID: 8300000, guid: 93c234b6db561d2408772d23189146a2, type: 3}
+  Hook: {fileID: 0}
+  childDuck: {fileID: 0}
 --- !u!4 &481894682
 Transform:
   m_ObjectHideFlags: 0
@@ -2456,7 +2458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &840176276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,6 +2476,8 @@ MonoBehaviour:
   shift: 5.5
   duckSpawnPoint: {fileID: 2033900348}
   duckScream: {fileID: 8300000, guid: 93c234b6db561d2408772d23189146a2, type: 3}
+  Hook: {fileID: 0}
+  childDuck: {fileID: 0}
 --- !u!4 &840176277
 Transform:
   m_ObjectHideFlags: 0
@@ -2842,7 +2846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1011965234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,6 +2864,8 @@ MonoBehaviour:
   shift: 9
   duckSpawnPoint: {fileID: 2033900348}
   duckScream: {fileID: 8300000, guid: 93c234b6db561d2408772d23189146a2, type: 3}
+  Hook: {fileID: 0}
+  childDuck: {fileID: 0}
 --- !u!4 &1011965235
 Transform:
   m_ObjectHideFlags: 0
@@ -3985,6 +3991,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1255465209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 80255bcdf80240a419ea949903e8d185, type: 3}
+  m_PrefabInstance: {fileID: 1687903260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1275740972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4584,7 +4595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1511328396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4602,6 +4613,8 @@ MonoBehaviour:
   shift: 7
   duckSpawnPoint: {fileID: 2033900348}
   duckScream: {fileID: 8300000, guid: 93c234b6db561d2408772d23189146a2, type: 3}
+  Hook: {fileID: 0}
+  childDuck: {fileID: 0}
 --- !u!4 &1511328397
 Transform:
   m_ObjectHideFlags: 0
@@ -4695,7 +4708,7 @@ Transform:
   m_GameObject: {fileID: 1533777497}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.27, y: 0, z: 0.605}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4718,7 +4731,9 @@ MonoBehaviour:
   radius: 2
   shift: 0
   duckSpawnPoint: {fileID: 2033900348}
-  duckScream: {fileID: 0}
+  duckScream: {fileID: 8300000, guid: 93c234b6db561d2408772d23189146a2, type: 3}
+  Hook: {fileID: 1716592046}
+  childDuck: {fileID: 1255465209}
 --- !u!82 &1533777501
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4862,10 +4877,10 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0032264434
-  m_Height: 0.02532036
+  m_Radius: 0.09040811
+  m_Height: 0.18081622
   m_Direction: 0
-  m_Center: {x: 0.012177978, y: 0.10738544, z: -0.04835508}
+  m_Center: {x: -0, y: 0.07743497, z: 0}
 --- !u!4 &1543098733 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 80255bcdf80240a419ea949903e8d185, type: 3}
@@ -5605,10 +5620,37 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0021718815
-  m_Height: 0.014294313
+  m_Radius: 0.0096494
+  m_Height: 0.024021804
   m_Direction: 0
-  m_Center: {x: -0.0059600705, y: -0.029817902, z: 0}
+  m_Center: {x: -0.0028530657, y: -0.023085885, z: 0.00074550137}
+--- !u!54 &1716592052
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716592046}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1722889805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6870,6 +6912,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3538076481289603187, guid: cfba079bf1101864b9cc992e32987006, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1716592048}
+    - targetCorrespondingSourceObject: {fileID: 3538076481289603187, guid: cfba079bf1101864b9cc992e32987006, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1716592052}
   m_SourcePrefab: {fileID: 100100000, guid: cfba079bf1101864b9cc992e32987006, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

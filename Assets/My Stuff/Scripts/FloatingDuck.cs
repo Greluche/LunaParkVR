@@ -8,10 +8,11 @@ public class FloatingDuck : MonoBehaviour
     public float shift = 0f;
     public Transform duckSpawnPoint;
     public AudioClip duckScream;
-
+    public GameObject Hook;
     private DuckFishingGameManager gameManager;
     private XRController xr;
     private AudioSource quack;
+    public GameObject childDuck;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +24,7 @@ public class FloatingDuck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         // trajectory
         float x = Mathf.Cos((Time.time + shift) * angularSpeed) * radius;
         float z = Mathf.Sin((Time.time + shift) * angularSpeed) * radius;
@@ -31,8 +33,9 @@ public class FloatingDuck : MonoBehaviour
 
         transform.position = new Vector3(x, y, z);
         transform.LookAt(duckSpawnPoint);
+        */
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Jail"))
@@ -46,14 +49,19 @@ public class FloatingDuck : MonoBehaviour
 
         }
     }
-
+    */
     private void OnCollisionEnter(Collision collision)
-    {
+    {   
+
+        Debug.Log("ldasd");
         if (collision.gameObject.CompareTag("Hook"))
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
+            ///this.GetComponent<Rigidbody>().useGravity = true;
+            transform.parent = Hook.transform;
+            
             AudioSource.PlayClipAtPoint(duckScream, transform.position);
-            xr.SendHapticImpulse(0.7f, 2f);
+            angularSpeed = 0;
+            //xr.SendHapticImpulse(0.7f, 2f);
         }
     }
 }
