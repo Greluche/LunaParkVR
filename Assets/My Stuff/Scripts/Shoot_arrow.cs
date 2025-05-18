@@ -89,7 +89,7 @@ public class Shoot_arrow : MonoBehaviour
                 rb?.AddForce((-handpos+middlepoint )*5*(force), ForceMode.Impulse);
                 Debug.Log((handpos-middlepoint ).ToString());
                 Debug.Log( (Quaternion.Euler(0,-90,0 ) * transform.forward).ToString());
-                
+                r_a.transform.localScale = new Vector3(0.2f,0.1f ,0.1f );
                 rb.useGravity = true;
 
                 is_held = false;
