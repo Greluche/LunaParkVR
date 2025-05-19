@@ -7,6 +7,8 @@ TagManager:
   - ArenaWall
   - Hook
   - Jail
+  - Toy
+  - Rod
   layers:
   - Default
   - TransparentFX

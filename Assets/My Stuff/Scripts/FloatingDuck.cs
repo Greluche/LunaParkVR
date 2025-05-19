@@ -29,7 +29,7 @@ public class FloatingDuck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (captured == false)
+        if (!captured)
         {
             // trajectory
             float x = Mathf.Cos((Time.time + shift) * angularSpeed) * radius;
@@ -46,6 +46,7 @@ public class FloatingDuck : MonoBehaviour
     {
         if (other.CompareTag("Jail"))
         {
+            gameManager.tutorialTextDuck.gameObject.SetActive(false);
             Destroy(gameObject);
             if (gameManager != null)
             {
@@ -60,6 +61,7 @@ public class FloatingDuck : MonoBehaviour
         if (collision.gameObject.CompareTag("Hook"))
         {
             captured = true;
+            gameManager.tutorialTextDuck.gameObject.SetActive(true);
             ///this.GetComponent<Rigidbody>().useGravity = true;
             transform.parent = Hook.transform;
 

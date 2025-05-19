@@ -10,7 +10,9 @@ public class DuckFishingGameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI winText;
-    public TextMeshProUGUI tutorialText;
+    public TextMeshProUGUI tutorialTextRod;
+    public TextMeshProUGUI tutorialTextDuck;
+    public TextMeshProUGUI countdownText;
 
     [Header("Settings")]
     public float delayBeforeStart = 3f; // sync with countdown duration
@@ -20,10 +22,12 @@ public class DuckFishingGameManager : MonoBehaviour
     public float returnToHubDelay = 3f;
     
     public Transform hubSpawnPoint;
-    private float countdownTime = 30f; // #TODO change time
+    public bool gameStarted = false;
+
+    private float gameCountdown = 30f; // #TODO change time
     //private int totalEnemies;
     private int ducksJailed;
-    private bool gameStarted = false;
+    private float initialCountdown = 3f;
 
     void Start()
     {
@@ -31,15 +35,26 @@ public class DuckFishingGameManager : MonoBehaviour
 
         if (winText != null)
             winText.gameObject.SetActive(false);
-        
-        counterText.text = "Ducks captured: " + ducksJailed;
 
-        StartCoroutine(WaitForStart());
+        if (tutorialTextDuck != null)
+            tutorialTextDuck.gameObject.SetActive(false);
     }
 
-    IEnumerator WaitForStart()
+    public IEnumerator CountdownRoutine()
     {
-        yield return new WaitForSeconds(delayBeforeStart);
+        while (initialCountdown > 0f)
+        {
+            countdownText.text = Mathf.Ceil(initialCountdown).ToString();
+            yield return new WaitForSeconds(1f);
+            initialCountdown -= 1f;
+        }
+
+        // Show "GO!"
+        countdownText.text = "GO!";
+        yield return new WaitForSeconds(1f);
+
+        countdownText.gameObject.SetActive(false);
+
         gameStarted = true;
     }
 
@@ -47,27 +62,24 @@ public class DuckFishingGameManager : MonoBehaviour
     {
         if (!gameStarted) return;
 
-        if (countdownTime >= 0f)
+        if (gameCountdown >= 0f)
         {
-            int minutes = Mathf.FloorToInt(countdownTime / 60f);
-            int seconds = Mathf.FloorToInt(countdownTime % 60f);
-            int dsec = Mathf.FloorToInt((countdownTime * 10) % 10);
+            counterText.text = "Ducks captured: " + ducksJailed;
+
+            int minutes = Mathf.FloorToInt(gameCountdown / 60f);
+            int seconds = Mathf.FloorToInt(gameCountdown % 60f);
+            int dsec = Mathf.FloorToInt((gameCountdown * 10) % 10);
             timerText.text = $"Time: {minutes:00}:{seconds:00}:{dsec:00}";
-            countdownTime -= Time.deltaTime;
+            gameCountdown -= Time.deltaTime;
         }
         else
         {
-            gameStarted = false;
+            //gameStarted = false;
             timerText.color = new Color(1, 0, 0, 1);
             winText.text = "Done! You captured " + ducksJailed + " ducks";
             winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());
         }
-    }
-
-    public void OnRodGrabbed()
-    {
-        winText.gameObject.SetActive(false);
     }
 
     public void OnDuckJailed()
