@@ -23,7 +23,6 @@ public class SteeringWheel : UnityEngine.XR.Interaction.Toolkit.Interactables.XR
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
-
         if (controllingInteractor == null)
         {
             controllingInteractor = args.interactorObject;
