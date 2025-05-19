@@ -61,7 +61,7 @@ public class DuckFishingGameManager : MonoBehaviour
             timerText.color = new Color(1, 0, 0, 1);
             winText.text = "Done! You captured " + ducksJailed + " ducks";
             winText.gameObject.SetActive(true);
-            //StartCoroutine(ReturnToHubAfterDelay());
+            StartCoroutine(ReturnToHubAfterDelay());
         }
     }
 
