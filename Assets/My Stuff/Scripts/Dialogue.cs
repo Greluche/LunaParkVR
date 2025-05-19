@@ -10,13 +10,13 @@ public class Dialogue : MonoBehaviour
     public InputActionProperty nextLineButton;
 
     public string sceneToLoad;
-    
+
     [Header("UI Elements")]
     public GameObject dialogueBox;
     public TextMeshProUGUI textComponent;
     public Button yesButton;
     public Button noButton;
-    
+
     [Header("Dialogue Lines")]
     public string[] lines;
 
@@ -26,19 +26,23 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private Transform playerHead;
     [SerializeField] private Transform npcTransform;
     [SerializeField] private float dialogueCancelDistance = 3f;
+
+    [Header("NPC Voice Reactions")]
+    [SerializeField] private AudioClip[] voiceClips;
+    [SerializeField] private AudioSource voiceSource;
+
     void Start()
     {
         dialogueBox.SetActive(false);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
 
-        // Optional: hook up button behavior here or via inspector
         yesButton.onClick.AddListener(OnYes);
         noButton.onClick.AddListener(OnNo);
-        
+
         nextLineButton.action.Enable();
     }
-    
+
     void Update()
     {
         if (dialogueBox.activeSelf && nextLineButton.action.WasPressedThisFrame())
@@ -65,6 +69,7 @@ public class Dialogue : MonoBehaviour
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
         ShowLine();
+        PlayVoiceReaction(); // 👈 new addition
     }
 
     void ShowLine()
@@ -93,7 +98,6 @@ public class Dialogue : MonoBehaviour
 
     void OnYes()
     {
-        // TODO: You handle scene teleport here
         SceneManager.LoadScene(sceneToLoad);
         Debug.Log("Player chose YES");
         EndDialogue();
@@ -111,5 +115,14 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(false);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+    }
+
+    // 🔊 NEW METHOD: Play a random voice clip
+    void PlayVoiceReaction()
+    {
+        if (voiceSource == null || voiceClips.Length == 0) return;
+
+        AudioClip clip = voiceClips[Random.Range(0, voiceClips.Length)];
+        voiceSource.PlayOneShot(clip);
     }
 }
