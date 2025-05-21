@@ -12,7 +12,12 @@ public class RaceCountdownManager : MonoBehaviour
 
     public MonoBehaviour[] playerScriptsToDisable;
     public MonoBehaviour[] aiScriptsToDisable;
-
+    
+    [Header("Countdown Audio")]
+    public AudioSource countdownAudioSource;
+    public AudioClip Go;
+    
+    private bool countdownStarted = false;
     void Start()
     {
         StartCoroutine(CountdownRoutine());
@@ -22,23 +27,30 @@ public class RaceCountdownManager : MonoBehaviour
     {
         // Disable all control scripts
         SetScriptsEnabled(false);
-
+        // Countdown display sync
         float timeLeft = countdownTime;
-
+        
+        
         while (timeLeft > 0f)
         {
             countdownText.text = Mathf.Ceil(timeLeft).ToString();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
+            if (countdownStarted == false)
+            {
+                countdownAudioSource.clip = Go; 
+                countdownAudioSource.Play();
+            }    
+            yield return new WaitForSeconds(0.8f);
             timeLeft -= 1f;
+
+            countdownStarted = true;
         }
 
-        // Show "GO!"
         countdownText.text = "GO!";
         yield return new WaitForSeconds(1f);
-
         countdownText.gameObject.SetActive(false);
 
-        // Enable movement
+        // Enable gameplay
         SetScriptsEnabled(true);
     }
 

@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 public class CarControl : MonoBehaviour
 {
@@ -19,7 +21,19 @@ public class CarControl : MonoBehaviour
     [Header("Input Actions")]
     public InputActionProperty accelerateButton; // Forward button
     public InputActionProperty reverseButton;    // Reverse button
-
+    
+    [Header("Haptics")]
+    public HapticImpulsePlayer leftHaptics;
+    public HapticImpulsePlayer rightHaptics;
+    
+    [Header("Engine Audio")]
+    public AudioSource engineAudioSource;
+    public AudioClip engineLoopClip;
+    public float minPitch = 0.9f;
+    public float maxPitch = 1.3f;
+    public float minVolume = 0.05f;
+    public float maxVolume = 0.6f;
+    
     [Header("References")]
     public SteeringWheel steeringWheel;
 
@@ -29,8 +43,16 @@ public class CarControl : MonoBehaviour
     {
         accelerateButton.action.Enable();
         reverseButton.action.Enable();
-    }
 
+        if (engineAudioSource != null && engineLoopClip != null)
+        {
+            engineAudioSource.clip = engineLoopClip;
+            engineAudioSource.loop = true;
+            engineAudioSource.playOnAwake = false;
+            engineAudioSource.spatialBlend = 1f; // fully 3D
+            engineAudioSource.Play();
+        }
+    }
     private void Update()
     {
         float dt = Time.deltaTime;
@@ -63,6 +85,34 @@ public class CarControl : MonoBehaviour
             float turnAmount = steerInput * maxTurnSpeed * dt;
             transform.Rotate(Vector3.up, turnAmount);
         }
+        
+        if (engineAudioSource != null)
+        {
+            float normalizedSpeed = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxForwardSpeed);
+
+            engineAudioSource.volume = Mathf.Lerp(minVolume, maxVolume, normalizedSpeed);
+            engineAudioSource.pitch = Mathf.Lerp(minPitch, maxPitch, normalizedSpeed);
+        }
+        
+        // HAPTIC FEEDBACK BASED ON SPEED & STEERING
+        float hapticSteerInput = steeringWheel != null ? steeringWheel.WheelAngleNormalized() : 0f;
+        float baseIntensity = Mathf.Abs(currentSpeed) / maxForwardSpeed;
+
+        float leftIntensity  = baseIntensity * Mathf.Clamp01(-hapticSteerInput);
+        float rightIntensity = baseIntensity * Mathf.Clamp01(hapticSteerInput);
+
+// Forward-driving feedback (both hands)
+        float forwardIntensity = baseIntensity * (1f - Mathf.Abs(hapticSteerInput));
+        leftIntensity += forwardIntensity * 0.5f;
+        rightIntensity += forwardIntensity * 0.5f;
+        if (baseIntensity > 0.1f)
+        {
+            if (leftHaptics != null)
+                leftHaptics.SendHapticImpulse(leftIntensity, 0.05f);
+
+            if (rightHaptics != null)
+                rightHaptics.SendHapticImpulse(rightIntensity, 0.05f);
+        }
     }
     
     private float GetDampingFactor(Vector3 position)
@@ -82,6 +132,14 @@ public class CarControl : MonoBehaviour
 
         // Take the minimum damping factor
         return Mathf.Min(fx, fz);
+    }
+    
+    private void SendHaptic(XRBaseController controller, float amplitude, float duration = 0.05f)
+    {
+        if (controller != null)
+        {
+            controller.SendHapticImpulse(amplitude, duration);
+        }
     }
 }
 

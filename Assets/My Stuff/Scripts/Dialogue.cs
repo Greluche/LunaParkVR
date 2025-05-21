@@ -31,6 +31,11 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private AudioClip[] voiceClips;
     [SerializeField] private AudioSource voiceSource;
 
+    [Header("Tutorial Scene Settings")]
+    [SerializeField] private bool useTutorialScene = false;
+    [SerializeField] private string tutorialSceneName;
+    [SerializeField] private string tutorialPlayerPrefKey;
+    
     void Start()
     {
         dialogueBox.SetActive(false);
@@ -98,8 +103,21 @@ public class Dialogue : MonoBehaviour
 
     void OnYes()
     {
-        SceneManager.LoadScene(sceneToLoad);
         Debug.Log("Player chose YES");
+
+        if (useTutorialScene)
+        {
+            // Check if tutorial has already been completed
+            if (PlayerPrefs.GetInt(tutorialPlayerPrefKey, 0) == 0)
+            {
+                Debug.Log("Loading tutorial scene: " + tutorialSceneName);
+                SceneManager.LoadScene(tutorialSceneName);
+                return;
+            }
+        }
+
+        Debug.Log("Loading main game scene: " + sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad);
         EndDialogue();
     }
 

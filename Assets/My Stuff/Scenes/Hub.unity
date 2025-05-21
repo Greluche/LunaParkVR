@@ -1752,6 +1752,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1a4b34f9c9584a39919a6f1ddbeb03e, type: 3}
   - {fileID: 8300000, guid: 77ff2fced608f43c5ac106fb90b82831, type: 3}
   voiceSource: {fileID: 541307357743128164}
+  useTutorialScene: 0
+  tutorialSceneName: 
+  tutorialPlayerPrefKey: 
 --- !u!224 &205341098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5603,6 +5606,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d1a4b34f9c9584a39919a6f1ddbeb03e, type: 3}
   - {fileID: 8300000, guid: 77ff2fced608f43c5ac106fb90b82831, type: 3}
   voiceSource: {fileID: 1663011299025899860}
+  useTutorialScene: 0
+  tutorialSceneName: 
+  tutorialPlayerPrefKey: 
 --- !u!224 &787564122
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11216,6 +11222,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c33b58877ef714c259942f78e8f14187, type: 3}
   - {fileID: 8300000, guid: 4fda5a4647ac9401c99bba5fa28a3170, type: 3}
   voiceSource: {fileID: 4424610126451270983}
+  useTutorialScene: 1
+  tutorialSceneName: BumpingCarsTutorial
+  tutorialPlayerPrefKey: Played_BumperTutorial
 --- !u!114 &1695722819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16149,8 +16158,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.776294, y: 2.2036781, z: 1.8139007}
-  m_Center: {x: 0.1629479, y: 0.60183954, z: 0.40695047}
+  m_Size: {x: 1.776294, y: 2.6319408, z: 1.8139007}
+  m_Center: {x: 0.1629479, y: 0.81597114, z: 0.40695047}
 --- !u!4 &541307357743132755
 Transform:
   m_ObjectHideFlags: 0
@@ -18148,8 +18157,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4033396, y: 2.3396494, z: 2.053095}
-  m_Center: {x: 0.2621281, y: 0.6698209, z: 0.52654636}
+  m_Size: {x: 2.4033396, y: 3.0107079, z: 2.16287}
+  m_Center: {x: 0.26212773, y: 1.0053434, z: 0.58143383}
 --- !u!114 &1663011299025906325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22167,8 +22176,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6118006, y: 2.3347678, z: 1.3458787}
-  m_Center: {x: 0.053380013, y: 0.6673837, z: 0.17293942}
+  m_Size: {x: 1.6118006, y: 2.7988317, z: 1.510733}
+  m_Center: {x: 0.053380013, y: 0.89941585, z: 0.25536656}
 --- !u!4 &4478264398361966939
 Transform:
   m_ObjectHideFlags: 0
