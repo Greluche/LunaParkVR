@@ -15,19 +15,18 @@ public class DuckFishingGameManager : MonoBehaviour
     public TextMeshProUGUI countdownText;
 
     [Header("Settings")]
-    public float delayBeforeStart = 3f; // sync with countdown duration
-
-    [Header("Post-win Scene Transition")]
-    public string hubSceneName = "HubScene";  // Name of your hub scene
-    public float returnToHubDelay = 3f;
-    
-    public Transform hubSpawnPoint;
     public bool gameStarted = false;
 
+    [Header("Post-win Scene Transition")]
+    public string hubSceneName = "HubScene";
+    public float returnToHubDelay = 3f;
+
+    public Transform hubSpawnPoint;
+
     private float gameCountdown = 30f; // #TODO change time
-    //private int totalEnemies;
     private int ducksJailed;
     private float initialCountdown = 3f;
+    private Collider[] allColliders;
 
     void Start()
     {
@@ -38,9 +37,16 @@ public class DuckFishingGameManager : MonoBehaviour
 
         if (tutorialTextDuck != null)
             tutorialTextDuck.gameObject.SetActive(false);
+
+        /* allColliders = FindObjectsOfType<Collider>(); */
     }
 
-    public IEnumerator CountdownRoutine()
+    public void GameStart()
+    {
+        StartCoroutine(CountdownRoutine());
+    }
+
+    private IEnumerator CountdownRoutine()
     {
         while (initialCountdown > 0f)
         {
@@ -74,11 +80,7 @@ public class DuckFishingGameManager : MonoBehaviour
         }
         else
         {
-            //gameStarted = false;
-            timerText.color = new Color(1, 0, 0, 1);
-            winText.text = "Done! You captured " + ducksJailed + " ducks";
-            winText.gameObject.SetActive(true);
-            StartCoroutine(ReturnToHubAfterDelay());
+            StartCoroutine(GameFinished());
         }
     }
 
@@ -87,7 +89,18 @@ public class DuckFishingGameManager : MonoBehaviour
         ducksJailed++;
         counterText.text = "Ducks captured: " + ducksJailed;
     }
-    
+
+    private IEnumerator GameFinished()
+    {
+        yield return new WaitForSeconds(3f);
+        
+        gameStarted = false;
+        timerText.color = new Color(1, 0, 0, 1);
+        winText.text = "Done! You captured " + ducksJailed + " ducks";
+        winText.gameObject.SetActive(true);
+        StartCoroutine(ReturnToHubAfterDelay());
+    }
+
     private IEnumerator ReturnToHubAfterDelay()
     {
         yield return new WaitForSeconds(returnToHubDelay);
@@ -98,5 +111,4 @@ public class DuckFishingGameManager : MonoBehaviour
 
         SceneManager.LoadScene(hubSceneName);
     }
-
 }

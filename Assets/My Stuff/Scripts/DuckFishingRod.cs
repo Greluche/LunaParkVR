@@ -18,7 +18,7 @@ public class DuckFishingRod : UnityEngine.XR.Interaction.Toolkit.Interactables.X
         {
             gameManager.tutorialTextRod.gameObject.SetActive(false);
             Destroy(button);
-            StartCoroutine(gameManager.CountdownRoutine());
+            gameManager.GameStart();
         }
     }
 }
