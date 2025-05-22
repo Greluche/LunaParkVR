@@ -48,7 +48,7 @@ Anyone who wants to get familiar with the mechanics of a VR game!
 
 <pre><code>
   # Clone the repo 
-  git clone [https://github.com/username/project.git](https://github.com/Greluche/LunaParkVR.git) 
+  git clone [https://github.com/Greluche/LunaParkVR.git]
   cd project
 </code></pre>
 
