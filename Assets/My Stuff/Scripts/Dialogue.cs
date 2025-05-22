@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public Button yesButton;
     public Button noButton;
+    public Button repeatTutorialButton;
 
     [Header("Dialogue Lines")]
     public string[] lines;
@@ -41,6 +42,8 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(false);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        repeatTutorialButton.gameObject.SetActive(false);
+        repeatTutorialButton.onClick.AddListener(OnRepeatTutorial);
 
         yesButton.onClick.AddListener(OnYes);
         noButton.onClick.AddListener(OnNo);
@@ -74,7 +77,7 @@ public class Dialogue : MonoBehaviour
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
         ShowLine();
-        PlayVoiceReaction(); // 👈 new addition
+        PlayVoiceReaction();
     }
 
     void ShowLine()
@@ -99,6 +102,15 @@ public class Dialogue : MonoBehaviour
     {
         yesButton.gameObject.SetActive(true);
         noButton.gameObject.SetActive(true);
+
+        if (useTutorialScene && PlayerPrefs.GetInt(tutorialPlayerPrefKey, 0) == 1)
+        {
+            repeatTutorialButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            repeatTutorialButton.gameObject.SetActive(false);
+        }
     }
 
     void OnYes()
@@ -134,13 +146,22 @@ public class Dialogue : MonoBehaviour
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
     }
-
-    // 🔊 NEW METHOD: Play a random voice clip
+    
     void PlayVoiceReaction()
     {
         if (voiceSource == null || voiceClips.Length == 0) return;
 
         AudioClip clip = voiceClips[Random.Range(0, voiceClips.Length)];
         voiceSource.PlayOneShot(clip);
+    }
+    
+    void OnRepeatTutorial()
+    {
+        Debug.Log("Player chose to repeat the tutorial");
+
+        PlayerPrefs.SetInt(tutorialPlayerPrefKey, 0);
+        PlayerPrefs.Save();
+
+        SceneManager.LoadScene(tutorialSceneName);
     }
 }
