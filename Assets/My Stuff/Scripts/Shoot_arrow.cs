@@ -27,41 +27,45 @@ public class Shoot_arrow : MonoBehaviour
     public GrabBow bow_script;
     UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grab;
     public bool is_held;
+    public GameObject quiver;
     private LineRenderer lineRenderer;
     private Rigidbody rb;
     private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable midpointGrab;
     public void Start(){
         //access input devices, from : https://docs.unity3d.com/Manual/xr_input.html#AccessingInputDevices
         lineRenderer = _string.GetComponent<LineRenderer>();
-        bow_script = arrow.GetComponent<GrabBow>();
+        bow_script = quiver.GetComponent<GrabBow>();
         midpointGrab=  midpoint.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
 
     }
     public void Update(){
-        if(midpointGrab.enabled == false){
-               midpoint.transform.localPosition=   (endpoint_1.localPosition-endpoint_2.localPosition)/2 + endpoint_2.localPosition;
+        bow_script = quiver.GetComponent<GrabBow>();
+        if (midpointGrab.enabled == false)
+        {
+            midpoint.transform.localPosition = (endpoint_1.localPosition - endpoint_2.localPosition) / 2 + endpoint_2.localPosition;
 
         }
         
         if(bow_script.isArrowGrabbed && !is_held  ){
+            Debug.Log(bow_script.isArrowGrabbed.ToString());
              r_a =UnityEngine.Object.Instantiate(arrow,midpoint.transform.position ,transform.rotation, transform);
-            r_a.transform.localScale= new Vector3(1.5f,1.5f ,1.5f );
-            r_a.transform.rotation = transform.rotation * Quaternion.Euler(90,90,0);
+            r_a.transform.localScale= new Vector3(3.5f,3.5f ,3.5f );
+            r_a.transform.rotation = transform.rotation *Quaternion.Euler(0,0,90);
             r_a.transform.localPosition = lineRenderer.GetPosition(1);
              rb =   r_a.GetComponent<Rigidbody>();
             
             
-           bow_script.isArrowGrabbed = false;
+            bow_script.isArrowGrabbed = false;
             is_held = true;
             var k = r_a.GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRSimpleInteractable>();
             k.enabled = false;
         }else if(is_held){
-            r_a.transform.localPosition = lineRenderer.GetPosition(1);
-             var  middlepoint = (endpoint_1.position-endpoint_2.position)/2 + endpoint_2.position;
+            r_a.transform.localPosition = new Vector3(lineRenderer.GetPosition(1).x, lineRenderer.GetPosition(1).y-0.2f,lineRenderer.GetPosition(1).z);
+            var  middlepoint = (endpoint_1.position-endpoint_2.position)/2 + endpoint_2.position;
             var handpos  =  transform.TransformPoint( lineRenderer.GetPosition(1));
             if(middlepoint!= handpos){
                
-                  r_a.transform.rotation =Quaternion.LookRotation(   transform.forward  ,   (handpos-middlepoint).normalized) * Quaternion.Euler(-90,0,0);
+                  r_a.transform.rotation =Quaternion.LookRotation(   transform.forward  ,   (handpos-middlepoint).normalized) * Quaternion.Euler(0,90,90);
                
             }
 
@@ -91,7 +95,7 @@ public class Shoot_arrow : MonoBehaviour
                 Debug.Log( (Quaternion.Euler(0,-90,0 ) * transform.forward).ToString());
                 r_a.transform.localScale = new Vector3(0.2f,0.1f ,0.1f );
                 rb.useGravity = true;
-
+                
                 is_held = false;
                 
                
