@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DuckFishingGameManager : MonoBehaviour
 {
-    [Header("UI References")]
+    [Header("UI REFERENCES")]
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI winText;
@@ -14,11 +14,11 @@ public class DuckFishingGameManager : MonoBehaviour
     public TextMeshProUGUI tutorialTextDuck;
     public TextMeshProUGUI countdownText;
 
-    [Header("Settings")]
+    [Header("SETTINGS")]
     public bool gameStarted = false;
 
-    [Header("Post-win Scene Transition")]
-    public string hubSceneName = "HubScene";
+    [Header("POST-WIN SCENE TRANSITION")]
+    public string hubSceneName = "Hub";
     public float returnToHubDelay = 3f;
 
     public Transform hubSpawnPoint;
@@ -48,6 +48,7 @@ public class DuckFishingGameManager : MonoBehaviour
 
     private IEnumerator CountdownRoutine()
     {
+        countdownText.gameObject.SetActive(true);
         while (initialCountdown > 0f)
         {
             countdownText.text = Mathf.Ceil(initialCountdown).ToString();
