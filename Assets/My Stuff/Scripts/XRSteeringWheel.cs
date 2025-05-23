@@ -19,10 +19,13 @@ public class SteeringWheel : UnityEngine.XR.Interaction.Toolkit.Interactables.XR
     private UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor controllingInteractor = null;
     private float currentInteractorAngle = 0.0f;
     private float wheelAngle = 0.0f;
+    public bool wheelGrabbed = false;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
+        wheelGrabbed = true;
+        SendHapticImpulse(args.interactorObject, 0.3f, 0.1f);
         if (controllingInteractor == null)
         {
             controllingInteractor = args.interactorObject;
@@ -137,6 +140,14 @@ public class SteeringWheel : UnityEngine.XR.Interaction.Toolkit.Interactables.XR
         }
 
         return bestInteractor;
+    }
+    
+    private void SendHapticImpulse(UnityEngine.XR.Interaction.Toolkit.Interactors.IXRInteractor interactor, float amplitude, float duration)
+    {
+        if (interactor is UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInputInteractor controllerInteractor)
+        {
+            controllerInteractor.SendHapticImpulse(amplitude, duration);
+        }
     }
 }
 

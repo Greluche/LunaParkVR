@@ -3,6 +3,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
+
+
 
 public class BumperCarGameManager : MonoBehaviour
 {
@@ -23,7 +26,15 @@ public class BumperCarGameManager : MonoBehaviour
     private int totalEnemies;
     private int enemiesRemaining;
     private bool gameStarted = false;
+    
+    [Header("Haptics")]
+    public HapticImpulsePlayer leftHaptics;
+    public HapticImpulsePlayer rightHaptics;
 
+    [Header("Fade")]
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration = 1f;
+    
     void Start()
     {
         // Find all AI bumper cars at the start
@@ -61,11 +72,28 @@ public class BumperCarGameManager : MonoBehaviour
     {
         enemiesRemaining--;
         counterText.text = "Cars left: " + enemiesRemaining;
+        if (leftHaptics != null)
+        {
+            Debug.Log("Left Works");
+            leftHaptics.SendHapticImpulse(0.8f, 0.15f);
+        }
+
+        if (rightHaptics != null)
+        {
+            Debug.Log("Right Works");
+            rightHaptics.SendHapticImpulse(0.8f, 0.15f);
+        }
 
         if (enemiesRemaining <= 0)
         {
             gameStarted = false;
             HighScoreManager.BumpercarHighscore = elapsedTime;
+            float savedHighScore = PlayerPrefs.GetFloat("BumpercarHighscore", 0f);
+            if (savedHighScore == 0f || elapsedTime < savedHighScore)
+            {
+                PlayerPrefs.SetFloat("BumpercarHighscore", elapsedTime);
+                PlayerPrefs.Save(); // 🔐 Writes it to disk
+            }
             if (winText != null)
                 winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());
@@ -76,11 +104,30 @@ public class BumperCarGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(returnToHubDelay);
 
+        // Start fade out
+        if (fadeCanvasGroup != null)
+            yield return StartCoroutine(FadeOut());
+
         // Set spawn point for the hub
         SpawnPointManager.hubSpawnPosition = hubSpawnPoint.position;
         SpawnPointManager.hubSpawnRotation = hubSpawnPoint.rotation;
 
         SceneManager.LoadScene(hubSceneName);
+    }
+    
+    private IEnumerator FadeOut()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            fadeCanvasGroup.alpha = alpha;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = 1f;
     }
 
 }

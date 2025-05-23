@@ -15,12 +15,16 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogueManager.IsDialogueActive) return; // 🚫 Skip if dialogue is open
+        if (DialogueManager.IsDialogueActive) return;
+
+        if (xrCameraTransform == null || xrCameraTransform.position == Vector3.zero) return;
 
         if (interactButton.action.IsPressed())
         {
             float interactRange = 2f;
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+            Vector3 checkOrigin = xrCameraTransform.position; // HEAD instead of rig base
+            Collider[] colliderArray = Physics.OverlapSphere(checkOrigin, interactRange);
+
             foreach (Collider collider in colliderArray)
             {
                 if (collider.TryGetComponent(out NPCInteraction npcInteractable))

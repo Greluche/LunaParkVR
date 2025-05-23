@@ -17,6 +17,9 @@ public class AIBumperCar : MonoBehaviour
     public Transform arenaCenter;
     public float arenaWidth = 20f;
     public float arenaHeight = 20f;
+    
+    [Header("Explosion Sound")]
+    public AudioClip explosionSound;
 
     private BumperCarGameManager gameManager;
     private float directionTimer = 0f;
@@ -133,6 +136,10 @@ public class AIBumperCar : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log($"{gameObject.name} was destroyed by the player!");
+            if (explosionSound != null)
+            {
+                AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+            }
             if (explosionPrefab != null)
             {
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
