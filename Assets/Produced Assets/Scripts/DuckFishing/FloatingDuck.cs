@@ -58,7 +58,7 @@ public class FloatingDuck : MonoBehaviour
    
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameManager.gameStarted && collision.gameObject.CompareTag("Hook"))
+        if (gameManager.gameStarted && collision.gameObject.CompareTag("Hook") && !captured)
         {
             captured = true;
             gameManager.tutorialTextDuck.gameObject.SetActive(true);
