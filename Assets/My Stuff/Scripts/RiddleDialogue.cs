@@ -17,6 +17,9 @@ public class RiddleDialogue : MonoBehaviour
     public string rightAnswerAnimationTrigger = "Right"; // Animator trigger name
     public string wrongResponseLine = "INCORRECT"; // The new line
     public float delayBeforeReEnabling = 2f;
+    public AudioSource successAudio;
+    public ParticleSystem successEffect;
+    public BackroomsManager manager; 
     
     [Header("XR Input")]
     public InputActionProperty nextLineButton;
@@ -100,7 +103,7 @@ public class RiddleDialogue : MonoBehaviour
 
         // Show wrong response line
         dialogueText.text = wrongResponseLine;
-
+        duckGodVoice.Play();
         // Play the animation
         if (characterAnimator != null)
             characterAnimator.SetTrigger(wrongAnswerAnimationTrigger);
@@ -116,6 +119,13 @@ public class RiddleDialogue : MonoBehaviour
     
     private IEnumerator HandleCorrectAnswer()
     {
+        manager.MarkPuzzleComplete(3);
+        duckGodVoice.Play();
+        successAudio.Play();
+        ParticleSystem fx = Instantiate(successEffect, dialogueBox.transform.position, Quaternion.LookRotation(Vector3.up));
+        fx.transform.localScale = Vector3.one * 2.0f;
+        fx.Play();
+        Destroy(fx.gameObject, fx.main.duration + fx.main.startLifetime.constantMax);
         dialogueText.text = "That is correct! Well done."; // Or whatever message you want
         
         // Optionally hide buttons
