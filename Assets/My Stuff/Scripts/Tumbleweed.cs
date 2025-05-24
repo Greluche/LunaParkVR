@@ -11,6 +11,6 @@ public class Tumbleweed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Rigidbody>()?.AddForce(new Vector3(0, 0.005f, 0.04f), ForceMode.Impulse);
+        GetComponent<Rigidbody>()?.AddForce(new Vector3(Random.Range(-0.1f,0.1f), 0.06f + Random.Range(0.005f,0.02f), 0.065f + Random.Range(0.005f,0.03f)), ForceMode.Impulse);
     }
 }
