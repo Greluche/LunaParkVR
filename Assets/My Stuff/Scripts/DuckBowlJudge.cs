@@ -39,7 +39,7 @@ public class DuckBowlJudge : MonoBehaviour
         if (duck.duckColor == correctDuckColor)
         {
             Debug.Log("✅ Correct duck!");
-            scrollText.text = "Red as its blood, the duck god thanks you";
+            scrollText.text = "Red as its blood, the duck god thanks you. You may go back to the entrance.";
             manager.MarkPuzzleComplete(2);
             // ✅ Play success sound
             if (successAudio != null)
