@@ -22,6 +22,8 @@ public class ArcheryTutorialManager : MonoBehaviour
     private bool step1Complete = false;
     private bool step2Complete = false;
     private bool step3Complete = false;
+    private bool step4Complete = false;
+
 
     private bool isFading = false;
     public BowIsGrabbed bow_script;
@@ -63,9 +65,9 @@ public class ArcheryTutorialManager : MonoBehaviour
             bumper2.StopBlinking1();
             StartCoroutine(Step4());
         }
-        if (step1Complete && step2Complete && step3Complete && rdat.isHit)
+        if (step1Complete && step2Complete && step3Complete && rdat.isHit && !step4Complete)
         {
-            
+            step4Complete = true;
             StartCoroutine(Step5());
         }
         
@@ -109,7 +111,7 @@ public class ArcheryTutorialManager : MonoBehaviour
     IEnumerator GetReady()
     {
         isFading = true;
-        tutoText.text = "You are now ready to rumble, your goal will be to destroy all the other bumper cars. Good luck.";
+        tutoText.text = "Good Job ! your goal will be to hit as many ducks as possible. Good luck.";
         yield return new WaitForSeconds(5f);
 
         float elapsed = 0f;
