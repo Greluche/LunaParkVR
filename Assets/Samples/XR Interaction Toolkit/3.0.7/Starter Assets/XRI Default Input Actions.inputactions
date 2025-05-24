@@ -2227,6 +2227,17 @@
                 },
                 {
                     "name": "",
+                    "id": "4c62da8f-70d7-4e77-99f7-d4a2e4e4bc2e",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5b4ef08d-9ddd-4f0a-8539-d1114d14d143",
                     "path": "<XRController>{RightHand}/{Trigger}",
                     "interactions": "",

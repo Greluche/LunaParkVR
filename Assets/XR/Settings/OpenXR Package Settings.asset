@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Oculus Touch Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.oculustouch
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f647cc0545697264a9878224faada6d5, type: 3}
   m_Name: MetaQuestFeature Android
   m_EditorClassIdentifier: 
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Meta Quest Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.metaquest
@@ -104,19 +104,19 @@ MonoBehaviour:
   targetDevices:
   - visibleName: Quest
     manifestName: quest
-    enabled: 1
+    enabled: 0
   - visibleName: Quest 2
     manifestName: quest2
     enabled: 1
   - visibleName: Quest Pro
     manifestName: cambria
-    enabled: 1
+    enabled: 0
   - visibleName: Quest 3
     manifestName: eureka
-    enabled: 1
+    enabled: 0
   - visibleName: Quest 3S
     manifestName: quest3s
-    enabled: 1
+    enabled: 0
   forceRemoveInternetPermission: 0
   symmetricProjection: 0
   foveatedRenderingApi: 0
@@ -449,24 +449,24 @@ MonoBehaviour:
   m_Name: Android
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -7759417507284209052}
-  - {fileID: -6252423407426581788}
-  - {fileID: -8856456911739353827}
-  - {fileID: -7897865361162171088}
   - {fileID: 7301901982991115752}
-  - {fileID: -8723370861663904158}
   - {fileID: -2988554097393353437}
-  - {fileID: -3259099156729370249}
-  - {fileID: -3941166718345074086}
-  - {fileID: 9217223140732347329}
-  - {fileID: 3154054919500861062}
-  - {fileID: -9098357555818518720}
-  - {fileID: 8715801556996916630}
-  - {fileID: 1800257649286462544}
-  - {fileID: -8420705642418246981}
-  - {fileID: 4581910434923228761}
+  - {fileID: -8723370861663904158}
   - {fileID: 6631557821724178519}
+  - {fileID: -3259099156729370249}
+  - {fileID: 3154054919500861062}
+  - {fileID: 9217223140732347329}
   - {fileID: 1693115692536326194}
+  - {fileID: -7897865361162171088}
+  - {fileID: 1800257649286462544}
+  - {fileID: 8715801556996916630}
+  - {fileID: -3941166718345074086}
+  - {fileID: -8856456911739353827}
+  - {fileID: -6252423407426581788}
+  - {fileID: -9098357555818518720}
+  - {fileID: -8420705642418246981}
+  - {fileID: -7759417507284209052}
+  - {fileID: 4581910434923228761}
   - {fileID: -5033987056299400058}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
@@ -474,7 +474,7 @@ MonoBehaviour:
     m_List: 00000000
   m_depthSubmissionMode: 0
   m_spacewarpMotionVectorTextureFormat: 0
-  m_optimizeBufferDiscards: 0
+  m_optimizeBufferDiscards: 1
   m_symmetricProjection: 0
   m_foveatedRenderingApi: 0
 --- !u!114 &-3259099156729370249
@@ -853,26 +853,26 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -3853481733996477869}
-  - {fileID: -3982153408766625664}
   - {fileID: -72047905426448720}
-  - {fileID: -4399186258631164938}
   - {fileID: 195515062190350894}
+  - {fileID: -4399186258631164938}
+  - {fileID: 8008249645916092242}
   - {fileID: -3783239173290057765}
+  - {fileID: 4235463402383922813}
+  - {fileID: -1962470367880558477}
+  - {fileID: 4821544090457813526}
+  - {fileID: -5646452218095570975}
+  - {fileID: 8275532092872827646}
+  - {fileID: -4299862551721015425}
+  - {fileID: -5356511624404999342}
   - {fileID: 5549995953837155081}
   - {fileID: 962614132303544636}
-  - {fileID: -1962470367880558477}
-  - {fileID: -7326149485169101318}
-  - {fileID: -5646452218095570975}
-  - {fileID: 4235463402383922813}
+  - {fileID: -3982153408766625664}
   - {fileID: 1674001236955390176}
-  - {fileID: -5356511624404999342}
-  - {fileID: -4299862551721015425}
   - {fileID: -6552722265666895568}
+  - {fileID: -3853481733996477869}
+  - {fileID: -7326149485169101318}
   - {fileID: -3676988140399642310}
-  - {fileID: 4821544090457813526}
-  - {fileID: 8008249645916092242}
-  - {fileID: 8275532092872827646}
   - {fileID: 906033736917925873}
   m_renderMode: 1
   m_autoColorSubmissionMode: 1
