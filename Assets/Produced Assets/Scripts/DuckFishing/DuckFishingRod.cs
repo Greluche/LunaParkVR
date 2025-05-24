@@ -5,11 +5,13 @@ public class DuckFishingRod : UnityEngine.XR.Interaction.Toolkit.Interactables.X
 {
     private DuckFishingGameManager gameManager;
     private GameObject button;
+    private GameObject rod;
 
     void Start()
     {
         gameManager = FindObjectOfType<DuckFishingGameManager>();
         button = GameObject.Find("ButtonTutorial");
+        rod = GameObject.Find("TutorialFishingRod");
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
@@ -18,6 +20,7 @@ public class DuckFishingRod : UnityEngine.XR.Interaction.Toolkit.Interactables.X
         {
             gameManager.tutorialTextRod.gameObject.SetActive(false);
             Destroy(button);
+            Destroy(rod);
             gameManager.GameStart();
         }
     }
