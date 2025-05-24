@@ -13,7 +13,8 @@ public class RiddleDialogue : MonoBehaviour
     public string[] dialogueLines;
     public AudioSource duckGodVoice;
     public Animator characterAnimator; // Drag in the riddle character's animator
-    public string wrongAnswerAnimationTrigger = "Wrong"; // Animator trigger name
+    public string wrongAnswerAnimationTrigger = "Wrong";
+    public string rightAnswerAnimationTrigger = "Right"; // Animator trigger name
     public string wrongResponseLine = "INCORRECT"; // The new line
     public float delayBeforeReEnabling = 2f;
     
@@ -116,13 +117,16 @@ public class RiddleDialogue : MonoBehaviour
     private IEnumerator HandleCorrectAnswer()
     {
         dialogueText.text = "That is correct! Well done."; // Or whatever message you want
-
+        
         // Optionally hide buttons
         foreach (var btn in answerButtons)
             btn.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(3f); // Adjust the delay as needed
-
+        
+        if (characterAnimator != null)
+            characterAnimator.SetTrigger(rightAnswerAnimationTrigger);
+        
         dialogueBox.SetActive(false);
     }
 }

@@ -34,7 +34,10 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - SHADOWCASTER
+<<<<<<< HEAD
   - MOTIONVECTORS
+=======
+>>>>>>> 57d4ec28e734cdb4b1595f9c86872223a90517ce
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
