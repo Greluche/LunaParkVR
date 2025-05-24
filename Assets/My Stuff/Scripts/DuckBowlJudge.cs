@@ -8,13 +8,15 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class DuckBowlJudge : MonoBehaviour
 {
     public string correctDuckColor = "Red";
-
+    public BackroomsManager manager;
     public TextMeshProUGUI scrollText;
     public ParticleSystem fireEffect;
     public AudioSource screamAudio;
     public AudioSource fireAudio;
     public XRSocketInteractor socket;
     public GameObject duckBowl;
+    public AudioSource successAudio;
+    public ParticleSystem successEffect;
     private void Start()
     {
         scrollText.text = "The light will guide you towards the correct duck";
@@ -38,7 +40,19 @@ public class DuckBowlJudge : MonoBehaviour
         {
             Debug.Log("✅ Correct duck!");
             scrollText.text = "Red as its blood, the duck god thanks you";
-            // Optional: Play sparkle or success sound
+            manager.MarkPuzzleComplete(2);
+            // ✅ Play success sound
+            if (successAudio != null)
+                successAudio.Play();
+
+            // ✅ Spawn visual effect (sparkles, etc.)
+            if (successEffect != null)
+            {
+                ParticleSystem fx = Instantiate(successEffect, duckBowl.transform.position, Quaternion.LookRotation(Vector3.up));
+                fx.transform.localScale = Vector3.one * 2.0f;
+                fx.Play();
+                Destroy(fx.gameObject, fx.main.duration + fx.main.startLifetime.constantMax);
+            }
         }
         else
         {
