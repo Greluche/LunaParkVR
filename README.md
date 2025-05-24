@@ -47,9 +47,8 @@ Anyone who wants to get familiar with the mechanics of a VR game!
 1. Clone the Repository
 
 <pre><code>
-  # Clone the repo 
-  git clone [https://github.com/Greluche/LunaParkVR.git]
-  cd project
+  git clone https://github.com/Greluche/LunaParkVR.git
+  cd LunaParkVR
 </code></pre>
 
 2. Open Project in Unity
