@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 52719244}
   - component: {fileID: 52719243}
   m_Layer: 0
-  m_Name: GameSpawn
+  m_Name: PlayerSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11041,6 +11041,7 @@ GameObject:
   - component: {fileID: 4511068157478647011}
   - component: {fileID: 1716592048}
   - component: {fileID: 1716592052}
+  - component: {fileID: 6951285071752871787}
   m_Layer: 8
   m_Name: Hook
   m_TagString: Hook
@@ -11588,6 +11589,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1293400428558270302}
   m_Mesh: {fileID: -9028864303812783682, guid: ecca7061bc5c8b2418f313b66d4ffbc4, type: 3}
+--- !u!138 &6951285071752871787
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293400428558270302}
+  serializedVersion: 1
+  m_ConnectedBody: {fileID: 7819081277291505048}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 0
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!23 &7179178649104816668
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11698,7 +11715,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -11766,7 +11783,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03, y: 0.5, z: 0.03}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4370020206563430180}
   m_Father: {fileID: 567547350}

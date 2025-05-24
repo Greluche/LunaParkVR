@@ -112,17 +112,10 @@ Library: C:\Users\poseidon\Documents\GitHub\LunaParkVR\Temp\BurstOutput\tempburs
 --float-precision=Standard
 --target-framework=NetFramework
 --generate-link-xml=Temp\burst.link.xml
-<<<<<<< HEAD
 --temp-folder=C:\Users\poseidon\Documents\GitHub\LunaParkVR\Temp\Burst
 --key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.40f1/Editor/Data/PlaybackEngines/AndroidPlayer
 --decode-folder=C:\Users\poseidon\Documents\GitHub\LunaParkVR\Library\Burst
 --output=C:\Users\poseidon\Documents\GitHub\LunaParkVR\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
-=======
---temp-folder=C:\Users\leosp\LunaParkVR\Temp\Burst
---key-folder=C:/Program Files/Unity/Hub/Editor/6000.0.40f1/Editor/Data/PlaybackEngines/AndroidPlayer
---decode-folder=C:\Users\leosp\LunaParkVR\Library\Burst
---output=C:\Users\leosp\LunaParkVR\Temp\BurstOutput\tempburstlibs\arm64-v8a\lib_burst_generated
->>>>>>> 57d4ec28e734cdb4b1595f9c86872223a90517ce
 --pdb-search-paths=Temp/ManagedSymbols/
 
 --method=UnityEngine.XR.Hands.Gestures.XRHandOrientationUtility, Unity.XR.Hands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetHandAxisDirection(Unity.Mathematics.float3&, Unity.Mathematics, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|UnityEngine.XR.Hands.Gestures.XRHandAxis, Unity.XR.Hands, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|Unity.Mathematics.quaternion&, Unity.Mathematics, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--0ef4d50576f0f00022da4f79ae773f01
