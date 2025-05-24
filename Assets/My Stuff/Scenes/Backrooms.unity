@@ -11044,6 +11044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 219128735}
+  audioSource: {fileID: 0}
 --- !u!1001 &1105334288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11124,7 +11125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.035
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: 6707876468356395517, guid: 037ba65d346be2a48ad006b9a9a3873e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17969,7 +17970,6 @@ MonoBehaviour:
   endingText: {fileID: 207853070}
   lightRoom: {fileID: 85364733}
   oneTimeOnly: 1
-  audioSource: {fileID: 1810853807}
 --- !u!65 &1810853806
 BoxCollider:
   m_ObjectHideFlags: 0
