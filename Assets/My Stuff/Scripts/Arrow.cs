@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour
     private GameObject p;
     private List<GameObject> trajectoryPoints;
     private int c = 0;
+    public AudioSource source;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -73,11 +74,15 @@ public class Arrow : MonoBehaviour
                 rb.isKinematic = true;
             }
         }
-        else
+        else if (collision.gameObject.name.Contains( "Origin") || collision.gameObject.name == "Main Camera")
         {
+            rb.isKinematic = false;
+        }
+        else{
             rb.rotation = rotation;
             rb.position = new Vector3(collision.gameObject.transform.position.x, rb.position.y, rb.position.z);
             rb.isKinematic = true;
+            source.Play();
             isFlying = false;
         }
            

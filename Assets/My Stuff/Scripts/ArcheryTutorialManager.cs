@@ -30,6 +30,7 @@ public class ArcheryTutorialManager : MonoBehaviour
     public GrabBow grab_bow;
     public GrabBow grab_bow2;
     public RubberDuckArcheryTutorial rdat;
+    
 
     void Start()
     {
@@ -76,7 +77,7 @@ public class ArcheryTutorialManager : MonoBehaviour
     IEnumerator Step2()
     {
         yield return StartCoroutine(WellDone("Well done!"));
-        tutoText.text = "Now, use the A button on your right controller to click on the arrows";
+        tutoText.text = "Now, use the other trigger under your right index to click on the arrows";
         primary.StartBlinking();
     }
 
