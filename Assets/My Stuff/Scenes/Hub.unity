@@ -10723,6 +10723,89 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1030628142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1030628144}
+  - component: {fileID: 1030628143}
+  - component: {fileID: 1030628145}
+  m_Layer: 0
+  m_Name: TestJoystick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1030628143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030628142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a5832ec32354738a073a996daf1a10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topOfJoystick: {fileID: 51880821124359585}
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls: []
+  clawController: {fileID: 0}
+  forwardBackwardTilt: 0
+  sideToSideTilt: 0
+  returnSpeed: 5
+--- !u!4 &1030628144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030628142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.163, y: 0.74330497, z: 26.393196}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1030628145
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030628142}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1036116055
 GameObject:
   m_ObjectHideFlags: 0
@@ -15392,44 +15475,6 @@ Transform:
   - {fileID: 221323463}
   m_Father: {fileID: 810778817}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1640808483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5030468331612152159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c10feac63ec6e5439613a684513324f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  instructionsCanvas: {fileID: 5781466459340557900}
-  instructionsText: {fileID: 3696186933078557197}
-  winText: {fileID: 8496789768801535040}
-  attemptsText: {fileID: 1384659114104172936}
-  loseText: {fileID: 9140073678132257321}
-  playAgainCanvas: {fileID: 5480667543781615022}
-  playAgainText: {fileID: 5784878805694091706}
-  yesButton: {fileID: 6051027215156722301}
-  noButton: {fileID: 315282940098913778}
-  goldenTeddies:
-  - {fileID: 4973548089648966268}
-  - {fileID: 731392258530920661}
-  maxAttempts: 5
-  warningAttemptThreshold: 3
-  resetToysOnGameOver: 1
-  toyResetDelay: 2
-  toyContainer: {fileID: 0}
-  winMessageDisplayTime: 3
-  gameOverDisplayTime: 3
-  winMessageFont: {fileID: 0}
-  clawController: {fileID: 260036582873279531}
-  joystickController: {fileID: 1997804131529345918}
-  warningSound: {fileID: 8300000, guid: 4fc9556c93a9442eab2424090135831d, type: 3}
-  winSound: {fileID: 8300000, guid: 184324f7f5d9643feaeb6923ec0c9d0e, type: 3}
-  loseSound: {fileID: 8300000, guid: caeddf5fb0c2b4d288598cb11c946c8c, type: 3}
-  promptSound: {fileID: 0}
 --- !u!1 &1657260357
 GameObject:
   m_ObjectHideFlags: 0
@@ -21166,6 +21211,7 @@ MonoBehaviour:
   dropHapticIntensity: 0.4
   dropHapticDuration: 0.2
   useLocalCoordinates: 1
+  movementSound: {fileID: 8300000, guid: af3db5dcb980c48b2ae445ceed9f00e3, type: 3}
   OnDropCompleted:
     m_PersistentCalls:
       m_Calls: []
@@ -23594,8 +23640,8 @@ Transform:
   m_GameObject: {fileID: 5968933834339524963}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.02, y: -0.005, z: 0.026}
-  m_LocalScale: {x: 0.3, y: 0.29999995, z: 0.29999995}
+  m_LocalPosition: {x: 0.020000456, y: -0.004981997, z: 0.026000023}
+  m_LocalScale: {x: 0.3, y: 0.29999992, z: 0.29999995}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6523200029363480857}
@@ -27355,13 +27401,13 @@ Transform:
   m_GameObject: {fileID: 3154352427579403470}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.476, y: 1.298, z: 1.124}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 5.1522274, y: 0.6364602, z: 26.390705}
+  m_LocalScale: {x: 0.50000006, y: 0.5000001, z: 0.50000006}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 646392060227662032}
-  m_Father: {fileID: 3319576064364268646}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!136 &1787693118566863789
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -28773,7 +28819,6 @@ GameObject:
   - component: {fileID: 94941584574223990}
   - component: {fileID: 4424390998474217257}
   - component: {fileID: 4424390998474217259}
-  - component: {fileID: 4424390998474217260}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -30569,9 +30614,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1786984258744710218}
-  - component: {fileID: 3154352427579403471}
-  - component: {fileID: 3154352427579403473}
   - component: {fileID: 3154352427579403472}
+  - component: {fileID: 3154352427579403473}
   m_Layer: 0
   m_Name: Joystick
   m_TagString: Untagged
@@ -30579,29 +30623,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &3154352427579403471
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3154352427579403470}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.058977112
-  m_Height: 0.2652482
-  m_Direction: 2
-  m_Center: {x: 5.938472e-10, y: -0.0049815523, z: 0.21368957}
 --- !u!54 &3154352427579403472
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -30638,22 +30659,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3154352427579403470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e6403c1b7137945a6cfc6b4b48b4d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 70a5832ec32354738a073a996daf1a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topOfJoystick: {fileID: 51880821124359585}
   onGrab:
     m_PersistentCalls:
       m_Calls: []
   onRelease:
     m_PersistentCalls:
       m_Calls: []
-  topOfJoystick: {fileID: 51880821124359585}
   clawController: {fileID: 260036582873279531}
-  enableXMovement: 1
-  enableZMovement: 1
-  deadZone: 5
-  tiltToMoveMultiplier: 0.02
-  maxTiltAngle: 50
+  forwardBackwardTilt: 0
+  sideToSideTilt: 0
   returnSpeed: 3
 --- !u!1 &3175874040710491980
 GameObject:
@@ -30914,9 +30932,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1786984258744710218}
-  - {fileID: 8315666047967542584}
   - {fileID: 8507587628089744304}
+  - {fileID: 8315666047967542584}
   - {fileID: 4460091000767803375}
   - {fileID: 40476795538478326}
   - {fileID: 4594745615173415108}
@@ -31301,7 +31318,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 383}
+  m_AnchoredPosition: {x: 0, y: 232}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &3521444086448185679
@@ -31743,7 +31760,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: The claw game is simple. Catch one of the 2 golden teddys and you have
+    won the game.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -31808,7 +31826,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1054.1775, y: -10.3559475, z: -1056.5793, w: -788.2935}
+  m_margin: {x: -1054.1775, y: -10.3559475, z: -1056.5793, w: -500.6902}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -33014,7 +33032,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -33047,32 +33065,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4424390998474217260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2395886091644927638}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e6403c1b7137945a6cfc6b4b48b4d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onGrab:
-    m_PersistentCalls:
-      m_Calls: []
-  onRelease:
-    m_PersistentCalls:
-      m_Calls: []
-  topOfJoystick: {fileID: 51880821124359585}
-  clawController: {fileID: 260036582873279531}
-  enableXMovement: 1
-  enableZMovement: 1
-  deadZone: 5
-  tiltToMoveMultiplier: 0.02
-  maxTiltAngle: 30
-  returnSpeed: 3
 --- !u!1 &4424610126445953298
 GameObject:
   m_ObjectHideFlags: 0
@@ -35594,7 +35586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4836425340355863898}
-  - component: {fileID: 1640808483}
+  - component: {fileID: 5030468331612152160}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -35602,6 +35594,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5030468331612152160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030468331612152159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b14a0cf5b765d48fbb73c51e27092802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructionsCanvas: {fileID: 5781466459340557900}
+  attemptsText: {fileID: 1384659114104172936}
+  winText: {fileID: 8496789768801535040}
+  loseText: {fileID: 9140073678132257321}
+  playAgainCanvas: {fileID: 5480667543781615022}
+  yesButton: {fileID: 6051027215156722301}
+  noButton: {fileID: 315282940098913778}
+  goldenTeddies:
+  - {fileID: 4973548089648966268}
+  - {fileID: 731392258530920661}
+  maxAttempts: 5
+  clawController: {fileID: 260036582873279531}
+  joystickController: {fileID: 3154352427579403473}
+  warningSound: {fileID: 8300000, guid: 4fc9556c93a9442eab2424090135831d, type: 3}
+  winSound: {fileID: 8300000, guid: 508d9510fa6ab4785acacafe81637e3f, type: 3}
+  loseSound: {fileID: 8300000, guid: caeddf5fb0c2b4d288598cb11c946c8c, type: 3}
 --- !u!33 &5030603133114283746
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -38295,7 +38315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6523200029363480857
 Transform:
   m_ObjectHideFlags: 0
@@ -40031,7 +40051,7 @@ MonoBehaviour:
   m_PokeConfiguration:
     m_UseConstant: 1
     m_ConstantValue:
-      m_PokeDirection: 2
+      m_PokeDirection: 5
       m_InteractionDepthOffset: 0
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
@@ -41327,9 +41347,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5885567107577820690}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000037748947, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.429, y: 3.2888188, z: 0.57}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.42900014, y: 3.2888193, z: 0.5700006}
+  m_LocalScale: {x: 0.010000001, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6804922915831235283}
@@ -42355,7 +42375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: GAME OVER! MORE LUCK NEXT TIME...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -42710,3 +42730,5 @@ SceneRoots:
   - {fileID: 1002107519}
   - {fileID: 809588380}
   - {fileID: 457797824}
+  - {fileID: 1786984258744710218}
+  - {fileID: 1030628144}

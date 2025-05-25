@@ -37,7 +37,7 @@ public class ClawButton : MonoBehaviour
         {
             Debug.LogError("ClawButton: No ClawScript assigned! Button won't work properly.");
             
-            // Try to find ClawScript in the scene
+            // try to find ClawScript 
             clawController = FindObjectOfType<ClawScript>();
             if (clawController != null)
             {
@@ -119,7 +119,7 @@ public class ClawButton : MonoBehaviour
             }
         }
         
-        // Alternative direct approach - try to find the interactable component by name
+        // Alternative direct approach 
         var components = GetComponents<MonoBehaviour>();
         foreach (var component in components)
         {
@@ -206,33 +206,22 @@ public class ClawButton : MonoBehaviour
         ReleaseButton();
     }
     
+    // method calling the claw drop function
     private void PressButton()
     {
         if (isPressed) return; // Prevent multiple activations
-        
+
         isPressed = true;
-        
+
         // Trigger claw drop
         if (clawController != null)
         {
-            Debug.Log("Calling clawController.Drop()");
             clawController.Drop();
-            
-            // Double check if the Drop method exists using reflection
-            var dropMethod = clawController.GetType().GetMethod("Drop");
-            if (dropMethod != null)
-            {
-                Debug.Log("Drop method found on ClawScript");
-            }
-            else
-            {
-                Debug.LogError("Drop method NOT found on ClawScript!");
-            }
+
         }
         else
         {
-            Debug.LogError("ClawController is null! Cannot drop claw. Please assign the ClawScript in the inspector.");
-            
+
             // Try to find it again
             clawController = FindObjectOfType<ClawScript>();
             if (clawController != null)
@@ -241,7 +230,7 @@ public class ClawButton : MonoBehaviour
                 clawController.Drop();
             }
         }
-        
+
         // Automatically release the button after a short delay
         Invoke("ReleaseButton", autoReleaseTime);
     }
@@ -269,7 +258,6 @@ public class ClawButton : MonoBehaviour
         // Test button with keyboard shortcut (for debugging)
         if (Input.GetKeyDown(testKey))
         {
-            Debug.Log("Test button press via keyboard");
             PressButton();
             
             // Visual feedback
@@ -289,7 +277,7 @@ public class ClawButton : MonoBehaviour
     }
 }
 
-// Helper class to forward events using Unity's SendMessage pattern
+// Helper class mainly for debug issues
 public class ButtonEventForwarder : MonoBehaviour
 {
     private ClawButton parentButton;
@@ -299,20 +287,20 @@ public class ButtonEventForwarder : MonoBehaviour
         parentButton = GetComponent<ClawButton>();
     }
     
-    // Unity will call this method automatically when the interactable is selected
+    // called when the interactable is selected
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
-        Debug.Log("ButtonEventForwarder: OnSelectEntered called");
+        Debug.Log("buttonr: OnSelectEntered called");
         if (parentButton != null)
         {
             parentButton.OnButtonPressed();
         }
     }
     
-    // Unity will call this method automatically when the interactable is deselected
+    // called when the button is not selected anymore
     public void OnSelectExited(SelectExitEventArgs args)
     {
-        Debug.Log("ButtonEventForwarder: OnSelectExited called");
+        Debug.Log("button : OnSelectExited called");
         if (parentButton != null)
         {
             parentButton.OnButtonReleased();
