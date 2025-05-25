@@ -115,7 +115,7 @@ You have 90 seconds to hit as many ducks as possible
 3. **Pull the String**:
    - Grab the point in the middle of the string
    - Pull back
-   - Release to shoot the ArrowS
+   - Release to shoot the Arrow
 
 ### Scripts/Assets : 
 - **Adapted**  : BowString.cs, ForwardIndicator.cs, Shoot_arrow.cs
