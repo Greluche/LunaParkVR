@@ -7,62 +7,43 @@ using System.Collections;
 public class ToyController : MonoBehaviour
 {
     [Header("Primary Teleportation")]
-    [Tooltip("The transform where the toy will be teleported when it enters the drop zone")]
     public Transform destinationPoint;
     
-    [Tooltip("Direct reference to the drop zone collider (optional)")]
     public Collider dropZoneCollider;
-    
-    [Tooltip("Tag of the drop zone (default: DropZone)")]
     public string dropZoneTag = "DropZone";
     
-    [Tooltip("Should the toy reset its rotation when teleported")]
     public bool resetRotationOnTeleport = true;
     
-    [Tooltip("Make toy kinematic after teleporting to prevent jittering")]
     public bool makeKinematicAfterTeleport = true;
     
     [Header("Secondary Teleportation")]
-    [Tooltip("Optional second destination point that toy will teleport to after delay")]
     public Transform destinationPoint2;
     
-    [Tooltip("Time in seconds before teleporting to second destination (0 = disabled)")]
     [Range(0f, 10f)]
-    public float secondTeleportDelay = 0f;
+    public float secondTeleportDelay = 0f; // delay before teleportation
     
-    [Tooltip("Should the toy reset its rotation when teleported to second destination")]
     public bool resetRotationOnSecondTeleport = true;
     
-    [Tooltip("Enable gravity after teleporting to second destination")]
-    public bool useGravityAfterSecondTeleport = true;
+    public bool useGravityAfterSecondTeleport = true; //enable gravoty after 2nd teleportation
     
     [Header("Initial Position")]
-    [Tooltip("Store the initial position on start to allow resetting")]
     public bool storeInitialPosition = true;
     
-    [Tooltip("Should the toy use a random rotation when reset to initial position")]
     public bool randomRotationOnReset = true;
     
     [Header("Golden Teddy Settings")]
-    [Tooltip("Is this a golden teddy (special prize)")]
-    public bool isGoldenTeddy = false;
+    public bool isGoldenTeddy = false; // check if the toy is golden teddy
     
     [Header("Haptic Feedback")]
-    [Tooltip("Haptic intensity when a golden teddy is grabbed")]
     [Range(0f, 1f)]
     public float hapticIntensity = 0.5f;
-    
-    [Tooltip("Duration of haptic feedback")]
     public float hapticDuration = 0.2f;
     
     [Header("Audio")]
-    [Tooltip("Sound played when a golden teddy is grabbed")]
     public AudioClip goldenTeddySound;
-    
-    [Tooltip("Sound played when teleporting to second destination")]
     public AudioClip secondTeleportSound;
     
-    // Private references
+    // Privates
     private Rigidbody rb;
     private AudioSource audioSource;
     private bool hasTeleported = false;
@@ -74,6 +55,7 @@ public class ToyController : MonoBehaviour
     private Vector3 initialPosition;
     private Quaternion initialRotation;
     
+    // method to initializes component + sets up audio, and store the toys initial position
     void Awake()
     {
         // Get required components
@@ -94,13 +76,11 @@ public class ToyController : MonoBehaviour
         // Validate destination point
         if (destinationPoint == null)
         {
-            Debug.LogWarning($"No destination point set for {gameObject.name}. Toy won't teleport when it enters drop zone.");
         }
         
         // Validate drop zone reference
         if (dropZoneCollider == null)
         {
-            Debug.Log($"No drop zone collider directly assigned to {gameObject.name}. Will use tag '{dropZoneTag}' for detection.");
         }
         
         // Store initial position and rotation
@@ -110,6 +90,7 @@ public class ToyController : MonoBehaviour
         }
     }
     
+    // ensures the initial position and rotation are stored at the start of the game
     void Start()
     {
         // Store initial position if not done in Awake
@@ -119,16 +100,14 @@ public class ToyController : MonoBehaviour
         }
     }
     
-    /// <summary>
     /// Stores the current position and rotation as the initial state
-    /// </summary>
     public void StoreInitialPosition()
     {
         initialPosition = transform.position;
         initialRotation = transform.rotation;
-        Debug.Log($"Stored initial position for {gameObject.name}: {initialPosition}");
     }
     
+    // method that cancels any ongoing teleport coroutines when the toy is disabled
     void OnDisable()
     {
         // Cancel any pending teleports if object is disabled
@@ -139,9 +118,7 @@ public class ToyController : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Called when the toy is grabbed by the socket interactor
-    /// </summary>
+    // called when the toy is grabbed by the socket interactor
     public void OnSelectEntered(SelectEnterEventArgs args)
     {
         // Reset teleport flags when grabbed
@@ -167,13 +144,10 @@ public class ToyController : MonoBehaviour
             // Send haptic feedback
             SendHapticFeedback(args.interactorObject as UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor);
             
-            Debug.Log($"Golden teddy {gameObject.name} grabbed!");
         }
     }
     
-    /// <summary>
-    /// Called when the toy enters a trigger collider (the drop zone)
-    /// </summary>
+    // called when the toy enters the drop zone
     private void OnTriggerEnter(Collider other)
     {
         // Skip if already teleported to prevent multiple teleports
@@ -183,7 +157,6 @@ public class ToyController : MonoBehaviour
         // Check if this is the specific drop zone collider we referenced
         if (dropZoneCollider != null && other == dropZoneCollider)
         {
-            Debug.Log($"Toy {gameObject.name} entered the referenced drop zone");
             TeleportToDestination();
             return;
         }
@@ -191,14 +164,11 @@ public class ToyController : MonoBehaviour
         // Otherwise check by tag
         if (other.CompareTag(dropZoneTag))
         {
-            Debug.Log($"Toy {gameObject.name} entered a drop zone with tag: {dropZoneTag}");
             TeleportToDestination();
         }
     }
     
-    /// <summary>
-    /// Teleports the toy to the destination point
-    /// </summary>
+    // Teleports the toy to the destination point 1 handles all the complex physics 
     private void TeleportToDestination()
     {
         if (destinationPoint != null)
@@ -269,17 +239,13 @@ public class ToyController : MonoBehaviour
                 secondTeleportCoroutine = StartCoroutine(TeleportToSecondDestination(secondTeleportDelay));
             }
             
-            Debug.Log($"Teleported {gameObject.name} to destination point");
         }
         else
         {
-            Debug.LogWarning($"No destination point set for {gameObject.name}");
         }
     }
     
-    /// <summary>
-    /// Teleports the toy to the second destination after a delay
-    /// </summary>
+    // Teleports the toy to the 2nd destination after a delay same as before but for the win table
     private IEnumerator TeleportToSecondDestination(float delay)
     {
         // Wait for the specified delay
@@ -297,9 +263,7 @@ public class ToyController : MonoBehaviour
                 audioSource.clip = secondTeleportSound;
                 audioSource.Play();
             }
-            
-            Debug.Log($"Teleporting {gameObject.name} to second destination after {delay} seconds");
-            
+                        
             // Teleport with or without rotation reset
             if (resetRotationOnSecondTeleport)
             {
@@ -338,9 +302,7 @@ public class ToyController : MonoBehaviour
         secondTeleportCoroutine = null;
     }
     
-    /// <summary>
-    /// Stabilizes the toy after teleportation to prevent jittering
-    /// </summary>
+    // to stabilize the toy after teleportation 
     private IEnumerator StabilizeAfterTeleport()
     {
         // Wait a frame for physics to update
@@ -390,9 +352,7 @@ public class ToyController : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Re-enables collision between two colliders after a delay
-    /// </summary>
+    // reenables collision between two colliders after a delay
     private IEnumerator ReenableCollision(Collider col1, Collider col2, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -404,9 +364,7 @@ public class ToyController : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Sends haptic feedback to the controller
-    /// </summary>
+    // for haptic feedback to the controller
     private void SendHapticFeedback(UnityEngine.XR.Interaction.Toolkit.Interactors.XRBaseInteractor interactor)
     {
         if (interactor == null) return;
@@ -422,13 +380,10 @@ public class ToyController : MonoBehaviour
         if (controller != null)
         {
             controller.SendHapticImpulse(hapticIntensity, hapticDuration);
-            Debug.Log($"Sent haptic feedback for golden teddy grab: {hapticIntensity} intensity for {hapticDuration}s");
         }
     }
     
-    /// <summary>
-    /// Force the toy to teleport to destination (can be called from other scripts)
-    /// </summary>
+    // Force the toy to teleport to destination if the other doesnt work
     public void ForceTeleport()
     {
         hasTeleported = false; // Reset flag to allow teleportation
@@ -436,9 +391,7 @@ public class ToyController : MonoBehaviour
         TeleportToDestination();
     }
     
-    /// <summary>
-    /// Force the toy to teleport directly to the second destination
-    /// </summary>
+    // Force the toy to teleport directly to the second destination
     public void ForceSecondTeleport()
     {
         if (destinationPoint2 != null)
@@ -487,17 +440,13 @@ public class ToyController : MonoBehaviour
             // Stabilize
             StartCoroutine(StabilizeAfterTeleport());
             
-            Debug.Log($"Force teleported {gameObject.name} to second destination");
         }
         else
         {
-            Debug.LogWarning($"Cannot force teleport to second destination - destinationPoint2 is not set");
         }
     }
     
-    /// <summary>
-    /// Check if this toy is currently in the drop zone
-    /// </summary>
+    // to check if toy is currently in the drop zone
     public bool IsInDropZone()
     {
         if (dropZoneCollider == null)
@@ -517,9 +466,7 @@ public class ToyController : MonoBehaviour
         return false;
     }
     
-    /// <summary>
-    /// Reset teleport flags to allow the toy to be teleported again
-    /// </summary>
+    // Reset teleport flags to allow the toy to be teleported again
     public void ResetTeleportFlags()
     {
         hasTeleported = false;
@@ -532,18 +479,14 @@ public class ToyController : MonoBehaviour
             secondTeleportCoroutine = null;
         }
         
-        Debug.Log($"Reset teleport flags for {gameObject.name}");
     }
     
-    /// <summary>
-    /// Reset the toy to its initial position
-    /// </summary>
+    // back the toy to its initial position
     public void ResetToInitialPosition()
     {
         // Make sure we have a valid initial position
         if (initialPosition == Vector3.zero && storeInitialPosition)
         {
-            Debug.LogWarning($"Initial position for {gameObject.name} is Vector3.zero. This might be incorrect. Setting current position as initial.");
             StoreInitialPosition();
         }
         
@@ -586,7 +529,6 @@ public class ToyController : MonoBehaviour
             rb.isKinematic = wasKinematic;
         }
         
-        Debug.Log($"Reset {gameObject.name} to initial position: {initialPosition}");
     }
 }
 
