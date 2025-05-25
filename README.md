@@ -104,7 +104,18 @@ You must destroy all other AI bumper cars as fast as possible
 - **Duck** : Explodes when hit by Arrow
 
 ### How to use
-TO BE COMPLETED
+You have 90 seconds to hit as many ducks as possible
+
+1. **Grab the bow**:
+  
+2. **Select the quiver**:
+   - Activate the quiver by clicking with the trigger under your index
+   - This spawns an arrow on the bow
+
+3. **Pull the String**:
+   - Grab the point in the middle of the string
+   - Pull back
+   - Release to shoot the ArrowS
 
 ### Scripts/Assets : 
 - **Adapted**  : BowString.cs, ForwardIndicator.cs, Shoot_arrow.cs
