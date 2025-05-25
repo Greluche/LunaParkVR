@@ -10,7 +10,7 @@ public class ArcheryGameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI winText;
-    public TextMeshProUGUI tutorialText;
+    
 
     [Header("Settings")]
     public float delayBeforeStart = 3f; // sync with countdown duration
@@ -18,24 +18,29 @@ public class ArcheryGameManager : MonoBehaviour
     [Header("Post-win Scene Transition")]
     public string hubSceneName = "HubScene";  // Name of your hub scene
     public float returnToHubDelay = 3f;
-    
+
     public Transform hubSpawnPoint;
-    private float remainingTime = 180f; // 3 minutes
+    private float remainingTime = 90f; // 
     //private int totalEnemies;
-    private int ducksJailed;
+    private int score;
+    private int ducksHit;
+    public int nbDucks = 8;
     private bool gameStarted = false;
+    [Header("Fade")]
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration = 1f;
 
     void Start()
     {
         // Find all AI bumper cars at the start
         //AIBumperCar[] allEnemies = FindObjectsOfType<AIBumperCar>();
         //totalEnemies = allEnemies.Length;
-        ducksJailed = 0;
-
+        score = 0;
+        ducksHit = 0;
         if (winText != null)
             winText.gameObject.SetActive(false);
-        
-        counterText.text = "Score: " + ducksJailed;
+
+        counterText.text = "Score: " + score;
 
         StartCoroutine(WaitForStart());
     }
@@ -62,22 +67,22 @@ public class ArcheryGameManager : MonoBehaviour
         {
             timerText.text = $"Time: 00:00";
         }
-        
 
-        if (remainingTime <= 0)
+
+        if (remainingTime <= 0 || ducksHit == nbDucks)
         {
             gameStarted = false;
-            if (ducksJailed >= HighScoreManager.ArcheryHighScore)
+            if (score >= HighScoreManager.ArcheryHighScore)
             {
-                winText.text = "Done! You got  " + ducksJailed + " points ! New High Score !";
-                HighScoreManager.ArcheryHighScore = ducksJailed;
+                winText.text = "Done! You got  " + score + " points ! New High Score !";
+                HighScoreManager.ArcheryHighScore = score;
             }
             else
             {
-                winText.text = "Done! You got  " + ducksJailed + " points";
+                winText.text = "Done! You got  " + score + " points";
             }
-            
-            
+
+
             winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());
         }
@@ -88,21 +93,41 @@ public class ArcheryGameManager : MonoBehaviour
         winText.gameObject.SetActive(false);
     }
 
-    public void OnDuckHit(int score)
+    public void OnDuckHit(int score2)
     {
-        ducksJailed+=score;
-        counterText.text = "Score: " + ducksJailed;
+        score += score2;
+        ducksHit++;
+        counterText.text = "Score: " + score;
     }
-    
+
     private IEnumerator ReturnToHubAfterDelay()
     {
         yield return new WaitForSeconds(returnToHubDelay);
+
+        // Start fade out
+        if (fadeCanvasGroup != null)
+            yield return StartCoroutine(FadeOut());
 
         // Set spawn point for the hub
         SpawnPointManager.hubSpawnPosition = hubSpawnPoint.position;
         SpawnPointManager.hubSpawnRotation = hubSpawnPoint.rotation;
 
         SceneManager.LoadScene(hubSceneName);
+
+    }
+     private IEnumerator FadeOut()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+            fadeCanvasGroup.alpha = alpha;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = 1f;
     }
 
 }

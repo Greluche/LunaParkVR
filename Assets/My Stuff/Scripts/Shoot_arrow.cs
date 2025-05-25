@@ -35,6 +35,8 @@ public class Shoot_arrow : MonoBehaviour
     public HapticImpulsePlayer rightHaptics;
     public Vector3 sh = Vector3.zero;
     public bool isFlying;
+    public AudioSource source1;
+  
 
     public void Start()
     {
@@ -57,7 +59,7 @@ public class Shoot_arrow : MonoBehaviour
         {
             Debug.Log(bow_script.isArrowGrabbed.ToString());
             r_a = UnityEngine.Object.Instantiate(arrow, midpoint.transform.position, transform.rotation, transform);
-            r_a.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+            r_a.transform.localScale = new Vector3(0.45440f*15f, 0.171880f*17f,0.1330231f* 17f);
             r_a.transform.rotation = transform.rotation * Quaternion.Euler(0, 90, 90);
             r_a.transform.localPosition = lineRenderer.GetPosition(1);
             rb = r_a.GetComponent<Rigidbody>();
@@ -75,14 +77,16 @@ public class Shoot_arrow : MonoBehaviour
             var handpos = transform.TransformPoint(lineRenderer.GetPosition(1));
             if (middlepoint != handpos)
             {
+                
+                
 
                 r_a.transform.rotation = Quaternion.LookRotation(transform.forward, (handpos - middlepoint).normalized) * Quaternion.Euler(0, 90, 90);
                 if (rightHaptics != null && ((handpos - middlepoint).magnitude > 0.1 || (-handpos + middlepoint).magnitude > 0.1))
                 {
-                    rightHaptics.SendHapticImpulse(Math.Max((handpos - middlepoint).magnitude, (-handpos + middlepoint).magnitude), 0.05f);
-
+                    rightHaptics.SendHapticImpulse(Math.Min( (-handpos + middlepoint).magnitude, 1f), 0.05f);
+                    
                 }
-                sh = (handpos - middlepoint);
+                sh = (handpos - middlepoint); 
                 
                 
             }
@@ -101,17 +105,18 @@ public class Shoot_arrow : MonoBehaviour
             rb = r_a.GetComponent<Rigidbody>();
 
             rb.isKinematic = false;
-
+            source1.Play();
             r_a.layer = 1;
             r_a.transform.parent = null;
             rb.isKinematic = false;
             var middlepoint = (endpoint_1.position - endpoint_2.position) / 2 + endpoint_2.position;
             var handpos = transform.TransformPoint(lineRenderer.GetPosition(1));
             rb?.AddForce((-handpos + middlepoint) * 5 * (force), ForceMode.Impulse);
-            r_a.transform.localScale = new Vector3(0.45f, 0.17f, 0.13f);
+            r_a.transform.localScale = new Vector3(0.45f * 2, 0.17f * 2, 0.13f * 2);
             rb.useGravity = true;
             r_a.GetComponent<Arrow>().isFlying = true;
             is_held = false;
+            
 
 
 
