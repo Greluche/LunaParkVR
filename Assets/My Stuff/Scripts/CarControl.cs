@@ -36,14 +36,19 @@ public class CarControl : MonoBehaviour
     
     [Header("References")]
     public SteeringWheel steeringWheel;
-
+    
+    [Header("Visual Effects")]
+    public ParticleSystem speedLineVFX;
+    public float maxSpeedForVFX = 5f;
+    public float maxEmissionRate = 100f;
+    
     private float currentSpeed = 0f;
 
     private void Start()
     {
         accelerateButton.action.Enable();
         reverseButton.action.Enable();
-
+        speedLineVFX.gameObject.SetActive(true);
         if (engineAudioSource != null && engineLoopClip != null)
         {
             engineAudioSource.clip = engineLoopClip;
@@ -93,7 +98,20 @@ public class CarControl : MonoBehaviour
             engineAudioSource.volume = Mathf.Lerp(minVolume, maxVolume, normalizedSpeed);
             engineAudioSource.pitch = Mathf.Lerp(minPitch, maxPitch, normalizedSpeed);
         }
-        
+        if (Mathf.Abs(currentSpeed) < 0.05f)
+        {
+            if (speedLineVFX.isPlaying)
+                speedLineVFX.Stop();
+        }
+        else
+        {
+            if (!speedLineVFX.isPlaying)
+                speedLineVFX.Play();
+
+            float normalizedSpeed = Mathf.InverseLerp(0f, maxSpeedForVFX, Mathf.Abs(currentSpeed));
+            var emission = speedLineVFX.emission;
+            emission.rateOverTime = Mathf.Lerp(0f, maxEmissionRate, normalizedSpeed);
+        }
         // HAPTIC FEEDBACK BASED ON SPEED & STEERING
         float hapticSteerInput = steeringWheel != null ? steeringWheel.WheelAngleNormalized() : 0f;
         float baseIntensity = Mathf.Abs(currentSpeed) / maxForwardSpeed;

@@ -68,12 +68,12 @@ public class RiddleDialogue : MonoBehaviour
             btn.gameObject.SetActive(true);
         }
 
-        Canvas.ForceUpdateCanvases();
+        //Canvas.ForceUpdateCanvases();
     }
     public void AnswerSelected(int choiceIndex)
     {
         Debug.Log("Player chose: " + choiceIndex);
-
+            
         bool isCorrect = (choiceIndex == 3); // define this elsewhere
 
         if (isCorrect)

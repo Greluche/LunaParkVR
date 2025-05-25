@@ -7,6 +7,7 @@ public class RubberDuckArchery : MonoBehaviour
     public GameObject gameManager;
     private ArcheryGameManager bow_script;
     public AudioSource source;
+    public int score;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +23,7 @@ public class RubberDuckArchery : MonoBehaviour
     {
         animation.Play();
         Destroy(duck, 1);
-        gameManager.GetComponent<ArcheryGameManager>().OnDuckHit();
+        gameManager.GetComponent<ArcheryGameManager>().OnDuckHit(score);
         source.Play();
     }
 }

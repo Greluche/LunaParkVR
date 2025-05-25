@@ -5,33 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/Hub.unity
     guid: 6e2fc3272ac66d6448ea076bbb30b6de
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/BumpingCars.unity
     guid: dba9c8d0cf288d7438f50b06b3aefbf0
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/Archery.unity
     guid: 04f69add8b0295c40a89f05f59988fda
-  - enabled: 0
-    path: Assets/My Stuff/Scenes/Haunted House.unity
-    guid: ee662599588ab0c4fb8025a4c5597f00
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/BumpingCarsTutorial.unity
     guid: d1895b51053a34340a0f064d095d2547
-  - enabled: 0
+  - enabled: 1
     path: Assets/My Stuff/Scenes/Backrooms.unity
     guid: aa5e714a1285ee84eb2f31d2db41ea7f
-  - enabled: 0
-    path: Assets/My Stuff/Scenes/DuckTutorial.unity
-    guid: 26b15adbd771847408a696dec758cf53
   - enabled: 1
     path: Assets/My Stuff/Scenes/DuckFishing.unity
     guid: c4febcca3f98cf3478c9c4e84cf12abd
+  - enabled: 1
+    path: Assets/My Stuff/Scenes/ArcheryTutorial.unity
+    guid: c7c233279084a2048b58c5d7700b05fb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 08bd5b16445f8eb4b84036fdc7f6a1c8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: acb46f00b6bb4764e99908127787ac84, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ac65c44ec80dabb4891e88e0cc16a34c, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 0bb3bede063b67b4f84a5a1665e8cc7e, type: 2}
   m_UseUCBPForAssetBundles: 0

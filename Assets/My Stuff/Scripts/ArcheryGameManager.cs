@@ -35,7 +35,7 @@ public class ArcheryGameManager : MonoBehaviour
         if (winText != null)
             winText.gameObject.SetActive(false);
         
-        counterText.text = "Ducks hit: " + ducksJailed;
+        counterText.text = "Score: " + ducksJailed;
 
         StartCoroutine(WaitForStart());
     }
@@ -54,12 +54,30 @@ public class ArcheryGameManager : MonoBehaviour
 
         int minutes = Mathf.FloorToInt(remainingTime / 60f);
         int seconds = Mathf.FloorToInt(remainingTime % 60f);
-        timerText.text = $"Time: {minutes:00}:{seconds:00}";
+        if (remainingTime >= 0)
+        {
+            timerText.text = $"Time: {minutes:00}:{seconds:00}";
+        }
+        else
+        {
+            timerText.text = $"Time: 00:00";
+        }
+        
 
-        if (remainingTime == 0)
+        if (remainingTime <= 0)
         {
             gameStarted = false;
-            winText.text = "Done! You hit " + ducksJailed + " ducks";
+            if (ducksJailed >= HighScoreManager.ArcheryHighScore)
+            {
+                winText.text = "Done! You got  " + ducksJailed + " points ! New High Score !";
+                HighScoreManager.ArcheryHighScore = ducksJailed;
+            }
+            else
+            {
+                winText.text = "Done! You got  " + ducksJailed + " points";
+            }
+            
+            
             winText.gameObject.SetActive(true);
             StartCoroutine(ReturnToHubAfterDelay());
         }
@@ -70,10 +88,10 @@ public class ArcheryGameManager : MonoBehaviour
         winText.gameObject.SetActive(false);
     }
 
-    public void OnDuckHit()
+    public void OnDuckHit(int score)
     {
-        ducksJailed++;
-        counterText.text = "Ducks hit: " + ducksJailed;
+        ducksJailed+=score;
+        counterText.text = "Score: " + ducksJailed;
     }
     
     private IEnumerator ReturnToHubAfterDelay()

@@ -76,6 +76,7 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(true);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        repeatTutorialButton.gameObject.SetActive(false);
         ShowLine();
         PlayVoiceReaction();
     }
@@ -123,13 +124,14 @@ public class Dialogue : MonoBehaviour
             if (PlayerPrefs.GetInt(tutorialPlayerPrefKey, 0) == 0)
             {
                 Debug.Log("Loading tutorial scene: " + tutorialSceneName);
-                SceneManager.LoadScene(tutorialSceneName);
+                SceneManager.LoadScene(tutorialSceneName, LoadSceneMode.Single);
+                EndDialogue();
                 return;
             }
         }
 
         Debug.Log("Loading main game scene: " + sceneToLoad);
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         EndDialogue();
     }
 
@@ -145,6 +147,7 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(false);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        repeatTutorialButton.gameObject.SetActive(false);
     }
     
     void PlayVoiceReaction()
@@ -161,7 +164,7 @@ public class Dialogue : MonoBehaviour
 
         PlayerPrefs.SetInt(tutorialPlayerPrefKey, 0);
         PlayerPrefs.Save();
-
-        SceneManager.LoadScene(tutorialSceneName);
+        EndDialogue();
+        SceneManager.LoadScene(tutorialSceneName, LoadSceneMode.Single);
     }
 }

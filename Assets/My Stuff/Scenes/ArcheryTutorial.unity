@@ -1276,6 +1276,11 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!20 &198779104 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1767192439, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+  m_PrefabInstance: {fileID: 278033905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &222596574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 468672, guid: 9de81cb010fadd74c85f793bbb3f6830, type: 3}
@@ -3106,7 +3111,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 198779104}
   m_PlaneDistance: 3
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -3533,8 +3538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3932cd45f819ce44fbc62fdd839c5d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muzzle: {fileID: 0}
-  bulletPrefab: {fileID: 1322821834}
   force: 5
   midpoint: {fileID: 100900068}
   endpoint_1: {fileID: 1672466126}
@@ -3546,6 +3549,9 @@ MonoBehaviour:
   bow_script: {fileID: 0}
   is_held: 0
   quiver: {fileID: 1043593526}
+  leftHaptics: {fileID: 0}
+  rightHaptics: {fileID: 0}
+  sh: {x: 0, y: 0, z: 0}
 --- !u!114 &1004143602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6140,7 +6146,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 198779104}
   m_PlaneDistance: 0.05
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

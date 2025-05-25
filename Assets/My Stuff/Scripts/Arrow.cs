@@ -1,5 +1,6 @@
 using UnityEngine;
-using System;
+
+using System.Collections.Generic;
 public class Arrow : MonoBehaviour
 {
     [SerializeField, Tooltip("Where to spawn the bullet")] 
@@ -9,6 +10,12 @@ public class Arrow : MonoBehaviour
     private Quaternion rotation;
     public GrabBow bow_script;
     private Shoot_arrow s_a;
+    public bool isFlying;
+    public GameObject point;
+    private GameObject p;
+    private List<GameObject> trajectoryPoints;
+    private int c = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,10 +23,30 @@ public class Arrow : MonoBehaviour
         rotation = rb.rotation;
         bow_script = GetComponent<GrabBow>();
         s_a = Bow.GetComponent<Shoot_arrow>();
+        trajectoryPoints = new List<GameObject>();
+        
 
     }
     void Update(){
-        
+        if (isFlying)
+        {
+
+            p = UnityEngine.Object.Instantiate(point, transform);
+            trajectoryPoints.Insert(c, p);
+            c += 1;
+            p.transform.parent = null;
+            p.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+        }
+        else
+        {
+            for (int i = 0; i < trajectoryPoints.Count; i++)
+            {
+                Destroy(trajectoryPoints[i]);
+            }
+            c = 0;
+            trajectoryPoints = new List<GameObject>();
+
+        }
 
     }
 
@@ -28,6 +55,7 @@ public class Arrow : MonoBehaviour
     {   
         
         Debug.Log(collision.gameObject.name);
+
 
         if (collision.gameObject.name == "Bow")
         {
@@ -48,8 +76,9 @@ public class Arrow : MonoBehaviour
         else
         {
             rb.rotation = rotation;
-            rb.position = new  Vector3(collision.gameObject.transform.position.x,rb.position.y,rb.position.z);
-            rb.isKinematic = true; 
+            rb.position = new Vector3(collision.gameObject.transform.position.x, rb.position.y, rb.position.z);
+            rb.isKinematic = true;
+            isFlying = false;
         }
            
          //rb.transform.position = collision.transform.position;

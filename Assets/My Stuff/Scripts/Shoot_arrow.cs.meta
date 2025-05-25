@@ -1,2 +1,21 @@
 fileFormatVersion: 2
 guid: 3932cd45f819ce44fbc62fdd839c5d85
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - muzzle: {instanceID: 0}
+  - bulletPrefab: {fileID: 100002, guid: 432dd2b7c2581c744a40ca43b1307c17, type: 3}
+  - midpoint: {instanceID: 0}
+  - endpoint_1: {instanceID: 0}
+  - endpoint_2: {instanceID: 0}
+  - _string: {instanceID: 0}
+  - Arrow_position: {instanceID: 0}
+  - arrow: {instanceID: 0}
+  - r_a: {instanceID: 0}
+  - bow_script: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

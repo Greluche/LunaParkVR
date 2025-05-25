@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Climbing;
+using UnityEngine.XR.Interaction.Toolkit.Locomotion.Teleportation;
 
 public class BackroomsManager : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class BackroomsManager : MonoBehaviour
     public GameObject thirdLight;
     public GameObject secondBlock;
     public GameObject thirdBlock;
+    public GameObject climbUI;
+    [Header("Teleportation Area Control")]
+    public TeleportationArea teleportationArea;
 
     [Header("Climbing Hold Visuals")]
     public Renderer hold1Renderer;
@@ -42,6 +46,8 @@ public class BackroomsManager : MonoBehaviour
         hold3.enabled = false;
         secondLight.SetActive(false);
         thirdLight.SetActive(false);
+        climbUI.SetActive(false);
+        teleportationArea.enabled = false;
     }
     private void Update()
     {
@@ -72,6 +78,8 @@ public class BackroomsManager : MonoBehaviour
                 thirdLight.SetActive(false);
                 hold3Renderer.material.color = activatedColor3;
                 teleportVolume.SetActive(true);
+                climbUI.SetActive(true);
+                teleportationArea.enabled = true;
             }
 
             if (puzzle1Complete && puzzle2Complete && puzzle3Complete)

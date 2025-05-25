@@ -19,7 +19,7 @@ public class DuckBowlJudge : MonoBehaviour
     public ParticleSystem successEffect;
     private void Start()
     {
-        scrollText.text = "The light will guide you towards the correct duck";
+        scrollText.text = "The light will guide you towards the correct duck to be placed in this bowl";
     }
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class DuckBowlJudge : MonoBehaviour
         if (duck.duckColor == correctDuckColor)
         {
             Debug.Log("✅ Correct duck!");
-            scrollText.text = "Red as its blood, the duck god thanks you";
+            scrollText.text = "Red as its blood, the duck god thanks you. You may go back to the entrance.";
             manager.MarkPuzzleComplete(2);
             // ✅ Play success sound
             if (successAudio != null)
@@ -83,7 +83,7 @@ public class DuckBowlJudge : MonoBehaviour
         Destroy(fire.gameObject, fire.main.duration + fire.main.startLifetime.constantMax);
         yield return new WaitForSeconds(1f);
         fireAudio.Stop();
-        scrollText.text =  "The light will guide you towards the correct duck";
+        scrollText.text =  "The light will guide you towards the correct duck to be placed in this bowl";
         
     }
 }
