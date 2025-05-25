@@ -124,16 +124,23 @@ You have 90 seconds to hit as many ducks as possible
 
 ## 3. Fishing Ducks 
 
-ARIEL COMPLETE
-
 ### Core Components
 
 ### How to use
+You have 30 seconds to fish as many ducks as possible.
+
+1. **Grab the rod**:
+   - Grab and hold the trigger of the right-hand controller to control the fishing rod 
+  
+2. **Pick up the duck**:
+   - Touch the rod's hook to the duck's hoop
+
+3. **Place the duck in the cage**
 
 ### Scripts/Assets : 
-- **Adapted**  : 
-- **Created** : 
-- **As-is** : 
+- **Adapted**  : RiverBrush.brush, Hook.fbx, Ring4Hoop.fbx, RubberDuck.fbx
+- **Created** : Ground.mat, Tutorial_Red.mat, Water.mat, DuckFishingGameManager.cs, DuckFishingRod.cs, FloatingDuck.cs, TutorialButton.cs, DuckTerrain.asset
+- **As-is** : Duck Scream.mp3, Forest Water Stream.mp3, LowPolyWater.cs
 
 ## 4. Claw Machine
 
