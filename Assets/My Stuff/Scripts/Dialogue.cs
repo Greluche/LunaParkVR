@@ -76,6 +76,7 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(true);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        repeatTutorialButton.gameObject.SetActive(false);
         ShowLine();
         PlayVoiceReaction();
     }
@@ -145,6 +146,7 @@ public class Dialogue : MonoBehaviour
         dialogueBox.SetActive(false);
         yesButton.gameObject.SetActive(false);
         noButton.gameObject.SetActive(false);
+        repeatTutorialButton.gameObject.SetActive(false);
     }
     
     void PlayVoiceReaction()

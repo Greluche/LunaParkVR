@@ -112,7 +112,7 @@ public class BumperCarGameManager : MonoBehaviour
         SpawnPointManager.hubSpawnPosition = hubSpawnPoint.position;
         SpawnPointManager.hubSpawnRotation = hubSpawnPoint.rotation;
 
-        SceneManager.LoadScene(hubSceneName);
+        SceneManager.LoadScene(hubSceneName, LoadSceneMode.Single);
     }
     
     private IEnumerator FadeOut()

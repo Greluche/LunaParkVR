@@ -56,7 +56,7 @@ public class BumperTutorialManager : MonoBehaviour
         yield return StartCoroutine(WellDone("Well done!"));
         yield return StartCoroutine(GetReady());
         TutorialProgress.MarkTutorialComplete("Played_BumperTutorial");
-        SceneManager.LoadScene("BumpingCars");
+        SceneManager.LoadScene("BumpingCars", LoadSceneMode.Single);
     }
 
     IEnumerator WellDone(string message)
