@@ -138,14 +138,15 @@ ARIEL COMPLETE
 You have 5 attemps to catch one of the two golden teddys
 
 1. **Joystick Control**:
-   - Grab the joystick with your VR controller using the near-far interaction
-   - It controls the claw movement (in unity you can enable movement on the x or z axis in the XRJoystickController script) 
+   - Grab the joystick directly with your VR controller, like you would do in real life
+   - It controls the claw movement 
    - The joystick will automatically return to center when released
 
 2. **Dropping the Claw**:
    - Position the claw over a prize
-   - Press the drop button when you are satisfied with the position
-   - Get closer and poke the button, the claw will automatically lower, attempt to grab a prize, and return
+   - Press the drop button when you are satisfied with the position 
+   - Get closer and poke gently the button or use a near/far grab interaction
+   - The claw will automatically lower, attempt to grab a prize, and return to its initial position
 
 3. **Prizes**:
    - Successfully grabbed prizes will be delivered to the drop zone and teleported to the win table
