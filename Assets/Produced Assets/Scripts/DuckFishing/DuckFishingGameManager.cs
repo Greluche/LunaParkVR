@@ -10,27 +10,33 @@ public class DuckFishingGameManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI countdownText;
     public TextMeshProUGUI tutorialTextRod;
     public TextMeshProUGUI tutorialTextDuck;
-    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI tutorialDone;
+    public Button tutorialSkip;
 
     [Header("SETTINGS")]
-    public bool gameStarted = false;
+    public bool tutorialCompleted = false;
+    private bool gameStarted = false;
 
     [Header("POST-WIN SCENE TRANSITION")]
     public string hubSceneName = "Hub";
     public float returnToHubDelay = 3f;
-
     public Transform hubSpawnPoint;
 
     private float gameCountdown = 30f; // #TODO change time
-    private int ducksJailed;
+    private int ducksJailed = 0;
     private float initialCountdown = 3f;
-    private Collider[] allColliders;
+    private GameObject button;
+    private GameObject rod;
 
     void Start()
     {
-        ducksJailed = 0;
+        tutorialSkip.onClick.AddListener(SkipTutorial);
+
+        button = GameObject.Find("ButtonTutorial");
+        rod = GameObject.Find("TutorialFishingRod");
 
         if (winText != null)
             winText.gameObject.SetActive(false);
@@ -38,17 +44,68 @@ public class DuckFishingGameManager : MonoBehaviour
         if (tutorialTextDuck != null)
             tutorialTextDuck.gameObject.SetActive(false);
 
-        /* allColliders = FindObjectsOfType<Collider>(); */
+        if (tutorialDone != null)
+            tutorialDone.gameObject.SetActive(false);
     }
 
-    public void GameStart()
+    void SkipTutorial()
     {
+        if (!tutorialCompleted)
+        {
+            tutorialCompleted = true;
+            GameStart();
+        }
+    }
+
+    // tutorial pt.1: grab rod
+    public void OnRodGrabbed()
+    {
+
+        tutorialTextRod.gameObject.SetActive(false);
+        Destroy(button);
+        Destroy(rod);
+    }
+
+    // tutorial pt.2: grab duck
+    public void OnDuckGrabbed()
+    {
+        if (!tutorialCompleted)
+            tutorialTextDuck.gameObject.SetActive(true);
+    }
+
+    // tutorial pt.3: jail duck
+    public void OnDuckJailed()
+    {
+        ducksJailed++;
+        counterText.text = "Ducks captured: " + ducksJailed;
+
+        if (!tutorialCompleted)
+        {
+            tutorialCompleted = true;
+            GameStart();
+        }
+    }
+
+    // tutorial done, start game
+    private void GameStart()
+    {
+        tutorialTextRod.gameObject.SetActive(false);
+        tutorialTextDuck.gameObject.SetActive(false);
+        tutorialSkip.gameObject.SetActive(false);
+
+        tutorialDone.gameObject.SetActive(true);
+
         StartCoroutine(CountdownRoutine());
     }
 
+    // countdown before game
     private IEnumerator CountdownRoutine()
     {
+        yield return new WaitForSeconds(3f);
+        tutorialDone.gameObject.SetActive(false);
+
         countdownText.gameObject.SetActive(true);
+
         while (initialCountdown > 0f)
         {
             countdownText.text = Mathf.Ceil(initialCountdown).ToString();
@@ -65,6 +122,7 @@ public class DuckFishingGameManager : MonoBehaviour
         gameStarted = true;
     }
 
+    // update if game is started
     void Update()
     {
         if (!gameStarted) return;
@@ -85,16 +143,11 @@ public class DuckFishingGameManager : MonoBehaviour
         }
     }
 
-    public void OnDuckJailed()
-    {
-        ducksJailed++;
-        counterText.text = "Ducks captured: " + ducksJailed;
-    }
-
+    // game done
     private IEnumerator GameFinished()
     {
         yield return new WaitForSeconds(3f);
-        
+
         gameStarted = false;
         timerText.color = new Color(1, 0, 0, 1);
         winText.text = "Done! You captured " + ducksJailed + " ducks";
@@ -102,6 +155,7 @@ public class DuckFishingGameManager : MonoBehaviour
         StartCoroutine(ReturnToHubAfterDelay());
     }
 
+    // return to hub after game is done
     private IEnumerator ReturnToHubAfterDelay()
     {
         yield return new WaitForSeconds(returnToHubDelay);

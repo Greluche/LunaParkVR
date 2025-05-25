@@ -13,8 +13,6 @@ public class FloatingDuck : MonoBehaviour
     private DuckFishingGameManager gameManager;
     private XRNode controllerNode;
     private InputDevice device;
-    private AudioSource quack;
-    public GameObject childDuck;
     private bool captured = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,27 +44,28 @@ public class FloatingDuck : MonoBehaviour
     {
         if (other.CompareTag("Jail"))
         {
-            gameManager.tutorialTextDuck.gameObject.SetActive(false);
             Destroy(gameObject);
+
             if (gameManager != null)
-            {
                 gameManager.OnDuckJailed();
-            }
             /* Instantiate(gameObject, Vector3.zero, Quaternion.Euler(0, 90, 0)); */
         }
     }
    
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameManager.gameStarted && collision.gameObject.CompareTag("Hook") && !captured)
+        if (collision.gameObject.CompareTag("Hook")) //&& !captured)
         {
-            captured = true;
-            gameManager.tutorialTextDuck.gameObject.SetActive(true);
+            if (gameManager != null)
+                gameManager.OnDuckGrabbed();
+
             ///this.GetComponent<Rigidbody>().useGravity = true;
             transform.parent = Hook.transform;
 
             AudioSource.PlayClipAtPoint(duckScream, transform.position);
             device.SendHapticImpulse(0, 0.7f, 2f);
+
+            captured = true;
         }
     }
 }
