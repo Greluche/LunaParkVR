@@ -26,7 +26,7 @@ public class DuckFishingGameManager : MonoBehaviour
     public Transform hubSpawnPoint;
 
     private float gameCountdown = 30f; // #TODO change time
-    private int score = 0;
+    private int ducksJailed = 0;
     private float initialCountdown = 3f;
     private GameObject button;
     private GameObject rod;
@@ -74,10 +74,10 @@ public class DuckFishingGameManager : MonoBehaviour
     }
 
     // tutorial pt.3: jail duck
-    public void OnDuckJailed(int pointsWorth)
+    public void OnDuckJailed()
     {
-        score += pointsWorth;
-        counterText.text = "Score: " + score;
+        ducksJailed++;
+        counterText.text = "Ducks captured: " + ducksJailed;
 
         if (!tutorialCompleted)
         {
@@ -92,10 +92,6 @@ public class DuckFishingGameManager : MonoBehaviour
         tutorialTextRod.gameObject.SetActive(false);
         tutorialTextDuck.gameObject.SetActive(false);
         tutorialSkip.gameObject.SetActive(false);
-        if (button != null)
-            Destroy(button);
-        if (rod != null)
-            Destroy(rod);
 
         tutorialDone.gameObject.SetActive(true);
 
@@ -105,7 +101,7 @@ public class DuckFishingGameManager : MonoBehaviour
     // countdown before game
     private IEnumerator CountdownRoutine()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         tutorialDone.gameObject.SetActive(false);
 
         countdownText.gameObject.SetActive(true);
@@ -133,7 +129,7 @@ public class DuckFishingGameManager : MonoBehaviour
 
         if (gameCountdown >= 0f)
         {
-            counterText.text = "Score: " + score;
+            counterText.text = "Ducks captured: " + ducksJailed;
 
             int minutes = Mathf.FloorToInt(gameCountdown / 60f);
             int seconds = Mathf.FloorToInt(gameCountdown % 60f);
@@ -154,7 +150,7 @@ public class DuckFishingGameManager : MonoBehaviour
 
         gameStarted = false;
         timerText.color = new Color(1, 0, 0, 1);
-        winText.text = "Done! You have a score of " + score;
+        winText.text = "Done! You captured " + ducksJailed + " ducks";
         winText.gameObject.SetActive(true);
         StartCoroutine(ReturnToHubAfterDelay());
     }
