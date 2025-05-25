@@ -17,9 +17,12 @@ public class RaceCountdownManager : MonoBehaviour
     public AudioSource countdownAudioSource;
     public AudioClip Go;
     
+    public GameObject countdownVFX;
+    
     private bool countdownStarted = false;
     void Start()
     {
+        countdownVFX.SetActive(false);
         StartCoroutine(CountdownRoutine());
     }
 
