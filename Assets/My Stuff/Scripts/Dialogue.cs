@@ -124,13 +124,14 @@ public class Dialogue : MonoBehaviour
             if (PlayerPrefs.GetInt(tutorialPlayerPrefKey, 0) == 0)
             {
                 Debug.Log("Loading tutorial scene: " + tutorialSceneName);
-                SceneManager.LoadScene(tutorialSceneName);
+                SceneManager.LoadScene(tutorialSceneName, LoadSceneMode.Single);
+                EndDialogue();
                 return;
             }
         }
 
         Debug.Log("Loading main game scene: " + sceneToLoad);
-        SceneManager.LoadScene(sceneToLoad);
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         EndDialogue();
     }
 
@@ -163,7 +164,7 @@ public class Dialogue : MonoBehaviour
 
         PlayerPrefs.SetInt(tutorialPlayerPrefKey, 0);
         PlayerPrefs.Save();
-
-        SceneManager.LoadScene(tutorialSceneName);
+        EndDialogue();
+        SceneManager.LoadScene(tutorialSceneName, LoadSceneMode.Single);
     }
 }

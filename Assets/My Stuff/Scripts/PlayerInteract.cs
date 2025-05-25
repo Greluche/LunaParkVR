@@ -7,8 +7,14 @@ public class PlayerInteract : MonoBehaviour
     [Header("References")] public InputActionProperty interactButton;
     [SerializeField] private Transform xrCameraTransform;
 
+    void Awake()
+    {
+        Debug.Log("PlayerInteract.Awake() on: " + gameObject.name);
+    }
+
     void Start()
     {
+        Debug.Log("PlayerInteract.Start() on: " + gameObject.name);
         interactButton.action.Enable();
     }
 
@@ -37,9 +43,15 @@ public class PlayerInteract : MonoBehaviour
 
     public bool IsNearInteractable()
     {
-        if (xrCameraTransform == null || xrCameraTransform.position == Vector3.zero)
+        if (xrCameraTransform == null)
         {
-            // Avoid proximity check if headset hasn't updated its position yet
+            Debug.Log("[Interact] XR camera is null");
+            return false;
+        }
+
+        if (xrCameraTransform.position == Vector3.zero)
+        {
+            Debug.Log("[Interact] XR camera position is zero");
             return false;
         }
 
@@ -47,11 +59,14 @@ public class PlayerInteract : MonoBehaviour
         Vector3 checkOrigin = xrCameraTransform.position;
 
         Collider[] colliderArray = Physics.OverlapSphere(checkOrigin, interactRange);
+        // Debug.Log($"[Interact] Found {colliderArray.Length} colliders near XR camera");
 
         foreach (Collider collider in colliderArray)
         {
+            // Debug.Log($"[Interact] Collider found: {collider.name}");
             if (collider.TryGetComponent(out NPCInteraction npcInteractable))
             {
+                Debug.Log($"[Interact] NPCInteraction found on: {collider.name}");
                 return true;
             }
         }

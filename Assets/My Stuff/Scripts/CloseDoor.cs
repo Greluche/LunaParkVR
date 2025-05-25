@@ -1,16 +1,17 @@
+using System;
 using UnityEngine;
 
-public class Screamer1 : MonoBehaviour
+public class CloseDoor : MonoBehaviour
 {
-    public Animator animator;
-    public string triggerName = "Screamer1";
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public AudioSource audioSource;
-
-    private void OnTriggerEnter(Collider other)
+    public Animator animator;
+    public string triggerName;
+    private void OnTriggerExit(Collider other)
     {
+
         if (other.CompareTag("MainCamera"))
         {
-
             if (audioSource != null)
                 audioSource.Play();
 
