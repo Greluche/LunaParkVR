@@ -7831,7 +7831,7 @@ GameObject:
   - component: {fileID: 1533777503}
   - component: {fileID: 1533777502}
   - component: {fileID: 1533777504}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: RubberDuckLvl1 (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8654,7 +8654,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -11371,7 +11371,7 @@ GameObject:
   - component: {fileID: 1695366543290784020}
   - component: {fileID: 7486955763524853575}
   - component: {fileID: 7850915062209028955}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pSphere3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11389,7 +11389,7 @@ GameObject:
   - component: {fileID: 5952537248494089601}
   - component: {fileID: 3605451227466860951}
   - component: {fileID: 3156186509400689229}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11405,7 +11405,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652424479943}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11440,7 +11440,7 @@ GameObject:
   - component: {fileID: 4511068157478647011}
   - component: {fileID: 1716592048}
   - component: {fileID: 1716592052}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hook
   m_TagString: Hook
   m_Icon: {fileID: 0}
@@ -11511,7 +11511,7 @@ GameObject:
   - component: {fileID: 4518980003145066930}
   - component: {fileID: 8515543521742075838}
   - component: {fileID: 8958941174332703580}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pSphere1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11815,7 +11815,7 @@ GameObject:
   - component: {fileID: 2902008073687163076}
   - component: {fileID: 6484840017456725437}
   - component: {fileID: 5901893355311120399}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11938,7 +11938,7 @@ GameObject:
   - component: {fileID: 2638999599874725790}
   - component: {fileID: 6271220931601129106}
   - component: {fileID: 4214915837931499815}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pSphere4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11972,7 +11972,7 @@ GameObject:
   - component: {fileID: 4694512721011067846}
   - component: {fileID: 351925574317851650}
   - component: {fileID: 4899486391054025721}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: pSphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12059,7 +12059,7 @@ GameObject:
   - component: {fileID: 1232054584219235523}
   - component: {fileID: 427333173551673872}
   - component: {fileID: 7179178649104816668}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
