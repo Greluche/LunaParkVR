@@ -16,8 +16,7 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
   - [4. Claw Machine](#4-claw-machine)
   - [5. Haunted House](#5-haunted-house)
 
-
-
+ 
 # Project Overview
 
 LunaPark VR immerses players in an atmospheric funfair featuring interactive VR mini-games designed for Oculus Quest 2. Players navigate and solve challenges, such as the claw machine, archery, duck fishing bumping cars and the Haunted House to uncover the mysteries of the park and fins the way back home.
@@ -69,12 +68,12 @@ Anyone who wants to get familiar with the mechanics of a VR game!
 
 ## 1. Bumping Cars 
 
-**Core Components**:
--**Steering Wheel** : SteeringWheel script, rigidbody, child sphere collider
--**Bumping Car** : Car control script, rigidbody, box collider, child XR rig + steering wheel
--**AI bumping car** : AI bumper car script, audio source, box collider, random sound player script
+### Core Components
+- **Steering Wheel** : SteeringWheel script, rigidbody, child sphere collider
+- **Bumping Car** : Car control script, rigidbody, box collider, child XR rig + steering wheel
+- **AI bumping car** : AI bumper car script, audio source, box collider, random sound player script
 
-### How to Use
+### How to use
 
 You must destroy all other AI bumper cars as fast as possible
 
@@ -90,32 +89,51 @@ You must destroy all other AI bumper cars as fast as possible
    - Colliding with an AI bumper car will instantly destroy it
    - Getting close to the arena boundaries will make the bumper car slow down gradually until it stops
 
+### Scripts/Assets : 
+- **Adapted**  : 
+- **Created** : 
+- **As-is** : 
+
 ## 2. Archery
-**Core Components**
--**Bow** : GrabInteractable, Rigidbody
--**String** : Child of bow, Linerenderer, midpoint (GrabInteractable)
--**Quiver** : SimpleInteractable, Spawns Arrow in bow
--**Arrow** : Rigibody, leaves trace when flying
--**Duck** : Explodes when hit by Arrow
 
-**Scripts/Assets**
-**Adapted**  : BowString.cs, ForwardIndicator.cs, Shoot_arrow.cs
-**Created** : Arrow.cs, BowIsGrabbed.cs, GrabBow.cs, MidPoint_phy.cs, RubberDuckArchery.cs,
-RubberDuckArcheryTutorial.cs,Score.cs, Target.cs, TumbleWeed.cs
-**As-is** : Elven Long Bow/Arrow, TumbleWeed, SM_Prop_Stall_Table_01, Explosion_Small_FX, RuberDuck, Cactus, Quiver
+### Core Components
+- **Bow** : GrabInteractable, Rigidbody
+- **String** : Child of bow, Linerenderer, midpoint (GrabInteractable)
+- **Quiver** : SimpleInteractable, Spawns Arrow in bow
+- **Arrow** : Rigibody, leaves trace when flying
+- **Duck** : Explodes when hit by Arrow
 
-## 3. Fishing Ducks
+### How to use
+TO BE COMPLETED
+
+### Scripts/Assets : 
+- **Adapted**  : BowString.cs, ForwardIndicator.cs, Shoot_arrow.cs
+- **Created** : Arrow.cs, BowIsGrabbed.cs, GrabBow.cs, MidPoint_phy.cs, RubberDuckArchery.cs, RubberDuckArcheryTutorial.cs,Score.cs, Target.cs, TumbleWeed.cs
+- **As-is** : Elven Long Bow/Arrow, TumbleWeed, SM_Prop_Stall_Table_01, Explosion_Small_FX, RuberDuck, Cactus, Quiver
+
+## 3. Fishing Ducks 
+
+ARIEL COMPLETE
+
+### Core Components
+
+### How to use
+
+### Scripts/Assets : 
+- **Adapted**  : 
+- **Created** : 
+- **As-is** : 
 
 ## 4. Claw Machine
 
-**Core Components**:
+### Core Components
 - **Claw** : Box collider (is Trigger), Claw script, XR socket interactor, GrabPoint child 
 - **Joystick Manette** : RigidBody (kinematic), XRJoystickController script, Capsule collider
 - **Button** : Box collider, ClawButton script, XR Poke Filter (on x), XR simple interactable
 - **Toys** : Capsule colliders, ToyController script, RigidBody(Gravity), XR grab interactable
 - **Win Table** : Box collider to block the toys
 
-### How to Use
+### How to use
 
 You have 5 attemps to catch one of the two golden teddys
 
@@ -133,16 +151,20 @@ You have 5 attemps to catch one of the two golden teddys
    - Successfully grabbed prizes will be delivered to the drop zone and teleported to the win table
    - Players can grab prizes from the win table with their VR controllers
 
+### Scripts/Assets : 
+- **Adapted**  : JoystickV3.cs
+- **Created** : ClawScript.cs, MachineUI.cs, ToyController.cs, ClawButton.cs
+- **As-is** : None
 
 ## 5. Haunted House
 
-**Core components**:
--**Screamers**: box collider, screamer script
--**Button**: XR sample asset prefab
--**Bowl**: socket interactor, correct duck script, box collider
--**Ducks**: grab interactable, rigidbody, collider
--**Riddle Dialogue**: interactable buttons
--**Climbing Holds**: capsule collider, rigidbody, XR climb interactable (+ climb assistance teleport volume)
+### Core Components
+- **Screamers**: box collider, screamer script
+- **Button**: XR sample asset prefab
+- **Bowl**: socket interactor, correct duck script, box collider
+- **Ducks**: grab interactable, rigidbody, collider
+- **Riddle Dialogue**: interactable buttons
+- **Climbing Holds**: capsule collider, rigidbody, XR climb interactable (+ climb assistance teleport volume)
 
 ### How to use
 
@@ -164,6 +186,11 @@ You have 5 attemps to catch one of the two golden teddys
    - Once the three challenges complete, all the climbing holds should be activated
    - Climb the pillar using the grip button, you can help yourself by teleporting at the top
    - Escape the haunted house through the door at the end of the bridge
+  
+### Scripts/Assets : 
+- **Adapted**  : 
+- **Created** : 
+- **As-is** :   
 
 
 ## Badges
