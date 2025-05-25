@@ -158,7 +158,7 @@ You have 5 attemps to catch one of the two golden teddys
 1. **Joystick Control**:
    - Grab the joystick directly with your VR controller, like you would do in real life
    - It controls the claw movement 
-   - The joystick will automatically return to center when released
+   - The joystick will automatically return to center when released 
 
 2. **Dropping the Claw**:
    - Position the claw over a prize
