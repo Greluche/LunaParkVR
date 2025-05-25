@@ -25,5 +25,6 @@ public class RubberDuckArchery : MonoBehaviour
         Destroy(duck, 1);
         gameManager.GetComponent<ArcheryGameManager>().OnDuckHit(score);
         source.Play();
+        Destroy(collision.gameObject, 0.5f);
     }
 }
