@@ -91,6 +91,19 @@ You must destroy all other AI bumper cars as fast as possible
    - Getting close to the arena boundaries will make the bumper car slow down gradually until it stops
 
 ## 2. Archery
+**Core Components**: 
+-**Bow** : GrabInteractable, Rigidbody
+-**String** : Child of bow, Linerenderer, midpoint (GrabInteractable)
+-**Quiver** : SimpleInteractable, Spawns Arrow in bow
+-**Arrow** : Shoots, leaves trace 
+-**Duck** : Explodes when hit by Arrow
+Scripts/Assets
+Adapted  : BowString.cs, ForwardIndicator.cs, Shoot_arrow.cs
+
+Created : Arrow.cs, BowIsGrabbed.cs, GrabBow.cs, MidPoint_phy.cs, RubberDuckArchery.cs,
+RubberDuckArcheryTutorial.cs,Score.cs, Target.cs, TumbleWeed.cs
+
+As-is : Elven Long Bow/Arrow, TumbleWeed, SM_Prop_Stall_Table_01, Explosion_Small_FX, RuberDuck, Cactus, Quiver
 
 ## 3. Fishing Ducks
 
