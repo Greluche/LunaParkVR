@@ -69,6 +69,27 @@ Anyone who wants to get familiar with the mechanics of a VR game!
 
 ## 1. Bumping Cars 
 
+**Core Components**:
+-**Steering Wheel** : SteeringWheel script, rigidbody, child sphere collider
+-**Bumping Car** : Car control script, rigidbody, box collider, child XR rig + steering wheel
+-**AI bumping car** : AI bumper car script, audio source, box collider, random sound player script
+
+### How to Use
+
+You must destroy all other AI bumper cars as fast as possible
+
+1. **Steering**:
+   - Grab the wheel using the grip buttons to steer the bumper car
+   - Wheel normalized angle defines bumper car rotation transform
+
+2. **Movement**:
+   - Primary button (right controller) will make the car gradually accelerate until a maximum speed
+   - Secondary button (right controller) will make the car gradually accelerate in retromarch until a maximum speed
+
+3. **Arena**
+   - Colliding with an AI bumper car will instantly destroy it
+   - Getting close to the arena boundaries will make the bumper car slow down gradually until it stops
+
 ## 2. Archery
 
 ## 3. Fishing Ducks
@@ -102,6 +123,35 @@ You have 5 attemps to catch one of the two golden teddys
 
 
 ## 5. Haunted House
+
+**Core components**:
+-**Screamers**: box collider, screamer script
+-**Button**: XR sample asset prefab
+-**Bowl**: socket interactor, correct duck script, box collider
+-**Ducks**: grab interactable, rigidbody, collider
+-**Riddle Dialogue**: interactable buttons
+-**Climbing Holds**: capsule collider, rigidbody, XR climb interactable (+ climb assistance teleport volume)
+
+### How to use
+
+1. **First challenge**:
+   - Go through a corridor with a sequence of collider activated screamers
+   - Poke the button at the end with the controller to enable the first climbing hold (plays a winning sound)
+  
+2. **Second challenge**
+   - Select the correctly colored duck and put it in the bowl socket interactor
+   - Putting a wrong colored duck will destroy it
+   - Putting the correctly colored duck will enable the second climbing hold and play a winning sound
+
+3. **Third challenge**
+   - The duck God will face you and ask you a riddle through an interactable dialogue UI
+   - Give the wrong answer and the duck God will try to scare you
+   - Give the right answer to unlock the third and last climbing hold, again it'll play a winning sound
+
+4. **Climbable pillar**
+   - Once the three challenges complete, all the climbing holds should be activated
+   - Climb the pillar using the grip button, you can help yourself by teleporting at the top
+   - Escape the haunted house through the door at the end of the bridge
 
 
 ## Badges
