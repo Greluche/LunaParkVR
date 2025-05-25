@@ -171,9 +171,9 @@ You have 5 attemps to catch one of the two golden teddys
    - Players can grab prizes from the win table with their VR controllers
 
 ### Scripts/Assets : 
-- **Adapted**  : JoystickV3.cs
+- **Adapted**  : JoystickV3.cs, clawMachine prefab
 - **Created** : ClawScript.cs, MachineUI.cs, ToyController.cs, ClawButton.cs
-- **As-is** : None
+- **As-is** : teleportation.mp3, timeRunningOut.mp3, clawmove.wav, gameOver.wav, applause.wav, fabric_pattern_07.png, gold-textured-background.jpg, weathered_brown.jpg
 
 ## 5. Haunted House
 
