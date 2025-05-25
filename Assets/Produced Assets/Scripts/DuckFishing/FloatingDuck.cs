@@ -3,12 +3,15 @@ using UnityEngine.XR;
 
 public class FloatingDuck : MonoBehaviour
 {
+    public ParticleSystem explosionAnimation;
+    public int pointsWorth = 1;
     public float angularSpeed = .2f;
     public float radius = 2f;
     public float shift = 0f;
     public Transform duckSpawnPoint;
     public AudioClip duckScream;
     public GameObject Hook;
+    public AudioSource explosionSound;
 
     private DuckFishingGameManager gameManager;
     private XRNode controllerNode;
@@ -44,17 +47,20 @@ public class FloatingDuck : MonoBehaviour
     {
         if (other.CompareTag("Jail"))
         {
-            Destroy(gameObject);
+            if (explosionAnimation != null)
+                explosionAnimation.Play();
+            Destroy(gameObject, 1);
+            if (explosionSound != null)
+                explosionSound.Play();
 
             if (gameManager != null)
-                gameManager.OnDuckJailed();
-            /* Instantiate(gameObject, Vector3.zero, Quaternion.Euler(0, 90, 0)); */
+                gameManager.OnDuckJailed(pointsWorth);
         }
     }
    
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Hook")) //&& !captured)
+        if (collision.gameObject.CompareTag("Hook") && !captured)
         {
             if (gameManager != null)
                 gameManager.OnDuckGrabbed();
