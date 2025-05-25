@@ -29058,10 +29058,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 20.13909
-  m_Height: 47.68905
+  m_Radius: 23.704159
+  m_Height: 57.187702
   m_Direction: 2
-  m_Center: {x: 2.3653991, y: 0.7278211, z: 2.10635}
+  m_Center: {x: 3.07489, y: 1.9526964, z: 0.008955597}
 --- !u!222 &2513363856747183011
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39488,10 +39488,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 17.291271
-  m_Height: 68.06564
+  m_Radius: 21.818052
+  m_Height: 75.307045
   m_Direction: 2
-  m_Center: {x: 2.3653984, y: -2.12, z: -0.075522065}
+  m_Center: {x: -0.29991564, y: -2.3563986, z: -3.6963146}
 --- !u!1 &7313740702806507897
 GameObject:
   m_ObjectHideFlags: 0
@@ -41243,8 +41243,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 16.327953, y: 9.278536, z: 14.127064}
-  m_Center: {x: -0.000023841858, y: -0.40100813, z: -0.5413532}
+  m_Size: {x: 16.327953, y: 12.430908, z: 16.710371}
+  m_Center: {x: -0.00002384186, y: 1.1751823, z: -0.20672457}
 --- !u!114 &8496789768801535040
 MonoBehaviour:
   m_ObjectHideFlags: 0
