@@ -98,8 +98,8 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 - RaceCountdownManager.cs
 
 ### As-is
-- Big Explosion.mp3
-- Race Start Countdown.mp3
+- [Big Explosion.mp3]()
+- [Race Start Countdown.mp3]()
 - [BumperCar.fbx](https://sketchfab.com/3d-models/lunapark-bumper-cars-ffa24effe07e470cb0a207cc46b215a5)
 - [Yughues Free Metal Materials](https://assetstore.unity.com/packages/p/yughues-free-metal-materials-12949)
 - [AllSky Free Skybox Set](https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014)
