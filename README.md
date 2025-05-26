@@ -35,7 +35,7 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 
 # Scripts/assets for each custom feature
 
-## Miscellaneous: introduction scene
+## Miscellaneous: Introduction scene
   
 ### Adapted
 
@@ -47,7 +47,7 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 - [Home Interior Low Poly Pack](https://assetstore.unity.com/packages/3d/props/interior/pandazole-home-interior-low-poly-pack-203033)  
 - [Woods Lifestyle Pack](https://assetstore.unity.com/packages/3d/environments/low-poly-woods-lifestyle-65306)
 
-## Miscellaneous: hub
+## Miscellaneous: Hub
   
 ### Adapted
 
@@ -72,7 +72,7 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 
 ### As-is 
 - [Ambient Forest Sounds (YouTube)](https://www.youtube.com/watch?v=Q6DafqPSkNA&t=32s&ab_channel=BobPrivacy)
-- Quack.mp3
+- [Quack.mp3](https://www.youtube.com/watch?v=Fw3RB7xnb80)
 - [Free Hut Pack](https://assetstore.unity.com/packages/3d/props/free-hut-pack-130776)
 - [NPC/Player Voice Pack (Male)](https://assetstore.unity.com/packages/audio/sound-fx/voices/effort-sounds-male-npc-player-audio-pack-285382)
 - [Circus Music Album](https://assetstore.unity.com/packages/audio/music/circus-music-album-052818-119946)
@@ -110,8 +110,8 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 
 ### Adapted
 - [BowString.cs](https://github.com/SunnyValleyStudio/VR-Archery-in-Unity-2022/blob/main/Vid%201-2/BowString.cs)
-- ForwardIndicator.cs
-- Shoot_arrow.cs
+- [ForwardIndicator.cs]()
+- [Shoot_arrow.cs]()
 
 ### Created
 - ArcheryGameManager.cs
@@ -129,18 +129,13 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 - Shooter.cs
 - Target.cs
 - TumbleWeed.cs
-- ruber duck.controller
   
 ### As-is
 - [Elven Long Bow/Arrow](https://assetstore.unity.com/packages/3d/props/weapons/elven-long-bow-fully-animated-18118)
 - [TumbleWeed](https://sketchfab.com/3d-models/tumbleweed-e9fa341c64fe4626b5d5b0052b0c0b64)
 - [Low Poly Simple Medieval Props](https://assetstore.unity.com/packages/3d/props/low-poly-simple-medieval-props-258397)
-- RuberDuck
 - [Cactus](https://assetstore.unity.com/packages/3d/vegetation/lowpoly-cactus-pack-291590)
 - [Quiver](https://assetstore.unity.com/packages/3d/props/weapons/free-cartoon-weapon-pack-mobile-vr-23956)
-- arrow.mp3
-- arrow-twang.mp3
-- explosion.mp3
 - [Comic Explosion Effect](https://assetstore.unity.com/packages/vfx/particles/fire-explosions/comic-explosion-effect-317348)
 
 ## Fishing (ducks) 
@@ -202,12 +197,12 @@ A Virtual Reality Arcade Game built with Unity and C# for Oculus Quest 2.
 - Screamer1.cs
 
 ### As-is
-- FIRE SOUND EFFECT.mp3
-- Free Horror Ambiance.mp3
+- [FIRE SOUND EFFECT.mp3]()
+- [Free Horror Ambiance.mp3]()
 - [Mongolian Throat Singing (YouTube)](https://www.youtube.com/watch?v=8V85MNUbd38&ab_channel=RoyaltyFreeSoundEffects)
-- ScreamerX.mp3
-- WIN.mp3
-- OldLondon SDF.asset
+- [ScreamerX.mp3]()
+- [WIN.mp3]()
+- [OldLondon SDF.asset](https://www.dafont.com/old-london.font)
 - [Backrooms-like Asset Pack](https://assetstore.unity.com/packages/3d/environments/backrooms-like-asset-pack-254543)
 - [Pile of Skulls (3D Model)](https://sketchfab.com/3d-models/pile-of-skulls-11d46d32494c44218a55192adc067e57)
 
